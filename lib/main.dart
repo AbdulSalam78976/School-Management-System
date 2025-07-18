@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_app/common/resources/theme/app_theme.dart';
-import 'package:school_app/common/screen/login_screen.dart';
+import 'package:school_app/common/login/screen/login_screen.dart';
+import 'package:school_app/teacher/screens/teacher_dashboard.dart';
 
 void main() {
   runApp(const MyApp());
