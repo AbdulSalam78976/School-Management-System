@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:school_app/common/resources/theme/colors.dart';
 
 class Utils {
   /// Show a custom snackbar
@@ -12,11 +13,11 @@ class Utils {
     Get.snackbar(
       title,
       message,
-      backgroundColor: backgroundColor ?? Colors.black87,
-      colorText: Colors.white,
+      backgroundColor: backgroundColor ?? AppPalette.primaryColor,
+      colorText: AppPalette.whiteColor,
       snackPosition: SnackPosition.BOTTOM,
       margin: const EdgeInsets.all(12),
-      icon: icon != null ? Icon(icon, color: Colors.white) : null,
+      icon: icon != null ? Icon(icon, color: AppPalette.whiteColor) : null,
       duration: const Duration(seconds: 3),
     );
   }

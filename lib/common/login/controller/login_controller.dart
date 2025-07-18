@@ -20,22 +20,6 @@ class LoginController extends GetxController {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
 
-    if (email.isEmpty || password.isEmpty) {
-      Utils.snackBar('Error', 'Please enter email and password.');
-      return;
-    }
-
     isLoading.value = true;
-
-    // Simulate a login delay
-    Future.delayed(const Duration(seconds: 2), () {
-      isLoading.value = false;
-
-      Get.snackbar(
-        'Success',
-        'Logged in as $email',
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    });
   }
 }
