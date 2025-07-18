@@ -8,6 +8,11 @@ class LoginController extends GetxController {
 
   // Observable for loading state (optional)
   var isLoading = false.obs;
+  var obscureText = true.obs;
+
+  void toggleObscureText() {
+    obscureText.value = !obscureText.value;
+  }
 
   @override
   void onClose() {

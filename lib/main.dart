@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'School App',
       theme: AppTheme,
-      home: LoginScreen(),
+      home: TeacherHomeScreen(),
     );
   }
 }

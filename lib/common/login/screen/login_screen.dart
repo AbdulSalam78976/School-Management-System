@@ -81,26 +81,39 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(height: 16),
 
                     // Password Field
-                    TextFormField(
-                      controller: controller.passwordController,
-
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        prefixIcon: const Icon(
-                          Icons.lock,
-                          color: AppPalette.secondaryColor,
+                    Obx(
+                      () => TextFormField(
+                        controller: controller.passwordController,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          prefixIcon: const Icon(
+                            Icons.lock,
+                            color: AppPalette.secondaryColor,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: Icon(
+                                color: AppPalette.secondaryColor,
+                                controller.obscureText.value
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                              ),
+                            ),
+                            onPressed: controller.toggleObscureText,
+                          ),
                         ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                        obscureText: controller.obscureText.value,
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return 'Please enter your password';
+                          }
+                          return null;
+                        },
                       ),
-                      obscureText: true,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Please enter your password';
-                        }
-                        return null;
-                      },
                     ),
                     const SizedBox(height: 24),
 
