@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:school_app/common/utils/utils.dart';
 
 class LoginController extends GetxController {
   final emailController = TextEditingController();

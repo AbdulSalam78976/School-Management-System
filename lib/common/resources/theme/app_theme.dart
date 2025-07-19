@@ -3,7 +3,7 @@ import 'package:school_app/common/resources/theme/colors.dart';
 
 final AppTheme = ThemeData(
   primaryColor: AppPalette.primaryColor,
-  scaffoldBackgroundColor: AppPalette.backgroundColor,
+  scaffoldBackgroundColor: Colors.white,
   colorScheme: ColorScheme(
     primary: AppPalette.primaryColor,
     secondary: AppPalette.secondaryColor,

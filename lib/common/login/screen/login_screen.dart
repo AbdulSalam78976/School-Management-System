@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:school_app/common/components/loading_widget.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
 import 'package:school_app/common/utils/utils.dart';
 import 'package:get/get.dart';
 import 'package:school_app/common/login/controller/login_controller.dart';
-import 'package:school_app/common/loading_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -158,7 +158,7 @@ class LoginScreen extends StatelessWidget {
               () => controller.isLoading.value
                   ? Container(
                       color: Colors.black.withOpacity(0.3),
-                      child: const Center(child: LoadingWidget(size: 160)),
+                      child: const Center(child: LoadingWidget()),
                     )
                   : const SizedBox.shrink(),
             ),

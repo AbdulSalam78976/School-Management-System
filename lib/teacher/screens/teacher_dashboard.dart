@@ -1,59 +1,50 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:school_app/teacher/components/custom_appbar.dart';
-import 'package:school_app/teacher/components/custom_drawer.dart';
+import 'package:get/get.dart';
+import 'package:school_app/common/components/custom_appbar.dart';
+import 'package:school_app/common/components/custom_drawer.dart';
+import 'package:school_app/teacher/screens/screens%20controller/teacher_dashboard_controller.dart';
+import 'package:school_app/teacher/data/teacher_drawer_data.dart';
 
 class TeacherHomeScreen extends StatelessWidget {
   const TeacherHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TeacherDashboardController drawerController = Get.put(
+      TeacherDashboardController(),
+    );
+
     return Scaffold(
-      drawer: CustomDrawer(),
-      appBar: CustomAppBar(),
+      drawer: Obx(
+        () => CustomDrawer(
+          userName: 'Ms. Harper',
+          userProfileImage: 'assets/images/ms_harper.png',
+          items: TeacherDrawerData.getTeacherDrawerItems(drawerController),
+          onLogout: () {
+            // Handle teacher logout
+            Navigator.of(context).pushReplacementNamed('/login');
+          },
+        ),
+      ),
+      appBar: CustomAppBar(text: "Dashboard"),
 
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Stack(
-            children: [
-              Positioned(
-                top: 100,
-                right: 0,
-
-                child: Transform.rotate(
-                  angle: 70,
-                  child: const Image(
-                    image: AssetImage('assets/images/bg.png'),
-                    fit: BoxFit.cover,
-                    width: 400,
-                  ),
-                ),
-              ),
-
-              Positioned.fill(
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-                  child: Container(
-                    color: Colors.black.withOpacity(0), // Needed to enable blur
-                  ),
-                ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 40),
-                    const _GreetingSection(),
-                    const SizedBox(height: 30),
-                    const _ActionCardsGrid(),
-                    const SizedBox(height: 30),
-                  ],
-                ),
-              ),
-            ],
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 40),
+                const _GreetingSection(),
+                const SizedBox(height: 30),
+                const _ActionCardsGrid(),
+                const SizedBox(height: 30),
+              ],
+            ),
           ),
         ),
       ),
@@ -227,55 +218,6 @@ class _ActionCard extends StatelessWidget {
             ],
           ],
         ),
-      ),
-    );
-  }
-}
-
-class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: const BoxDecoration(color: Colors.blue),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundImage: AssetImage('assets/images/school_logo.png'),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'School Name',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-              ],
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Dashboard'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: const Icon(Icons.schedule),
-            title: const Text('Time Table'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: const Icon(Icons.logout),
-            title: const Text('Logout'),
-            onTap: () {
-              // Handle logout
-            },
-          ),
-        ],
       ),
     );
   }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:school_app/common/resources/theme/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  final String text;
+  const CustomAppBar({super.key, required this.text});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 10);
@@ -10,7 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -22,12 +25,28 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               },
             ),
 
+            // Center title
+            Expanded(
+              child: Center(
+                child: Text(
+                  text,
+                  style: GoogleFonts.bebasNeue(
+                    color: AppPalette.primaryColor,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 2,
+                  ),
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+
             // Notification and profile
             Row(
               children: [
                 IconButton(
-                  icon: const Icon(Icons.notifications_none),
-                  color: Colors.grey[700],
+                  icon: const Icon(Icons.notifications_none_rounded),
                   onPressed: () {
                     // Handle notification tap
                   },

@@ -39,6 +39,7 @@ dependencies:
   shared_preferences: 
   flutter_svg:
   lottie:
+  google_fonts:
 
 
 dev_dependencies:
