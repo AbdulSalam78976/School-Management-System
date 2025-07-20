@@ -33,7 +33,6 @@ class GreetingWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // 👋 Greeting + Date
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

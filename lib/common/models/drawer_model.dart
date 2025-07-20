@@ -12,4 +12,18 @@ class DrawerModel {
     required this.onTap,
     required this.isActive,
   });
+
+  DrawerModel copyWith({
+    IconData? icon,
+    String? title,
+    VoidCallback? onTap,
+    bool? isActive,
+  }) {
+    return DrawerModel(
+      icon: icon ?? this.icon,
+      title: title ?? this.title,
+      onTap: onTap ?? this.onTap,
+      isActive: isActive ?? this.isActive,
+    );
+  }
 }

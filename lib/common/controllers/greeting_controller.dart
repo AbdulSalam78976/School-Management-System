@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -20,11 +21,11 @@ class GreetingController extends GetxController {
   void _setGreeting() {
     final hour = DateTime.now().hour;
     if (hour < 12) {
-      greeting.value = '🌞 Good Morning';
+      greeting.value = 'Good Morning';
     } else if (hour < 17) {
-      greeting.value = '🌤️ Good Afternoon';
+      greeting.value = 'Good Afternoon';
     } else {
-      greeting.value = '🌙 Good Evening';
+      greeting.value = 'Good Evening';
     }
   }
 
@@ -41,7 +42,7 @@ class GreetingController extends GetxController {
       await Future.delayed(const Duration(seconds: 2));
 
       // ✅ Mock response
-      final fetchedName = 'Ms. Harper'; // Replace this with actual API call
+      final fetchedName = 'Abdul Salam'; // Replace this with actual API call
 
       name.value = fetchedName;
       error.value = '';
