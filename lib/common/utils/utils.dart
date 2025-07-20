@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
+import 'package:intl/intl.dart';
 
 class Utils {
+  static final formattedDate = DateFormat(
+    'MMMM d, yyyy',
+  ).format(DateTime.now());
+
   /// Show a custom snackbar
   static void snackBar(
     String title,

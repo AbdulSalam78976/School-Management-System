@@ -114,10 +114,10 @@ final AppTheme = ThemeData(
     labelStyle: TextStyle(color: AppPalette.primaryColor),
   ),
   cardTheme: CardThemeData(
-    color: AppPalette.whiteColor,
+    color: AppPalette.primaryColor,
     elevation: 2,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    margin: const EdgeInsets.all(8),
+    //margin: const EdgeInsets.all(8),
   ),
   dividerTheme: DividerThemeData(
     color: AppPalette.greyColor,
