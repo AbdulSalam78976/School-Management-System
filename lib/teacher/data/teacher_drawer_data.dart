@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:school_app/common/models/drawer_model.dart';
+import 'package:school_app/common/components/drawer/drawer_model.dart';
 import 'package:school_app/teacher/screens/screens%20controller/teacher_dashboard_controller.dart';
 
 class TeacherDrawerData {

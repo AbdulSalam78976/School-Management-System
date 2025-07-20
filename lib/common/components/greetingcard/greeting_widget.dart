@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:school_app/common/controllers/greeting_controller.dart';
+import 'package:school_app/common/components/greetingcard/greeting_controller.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
 
 class GreetingWidget extends StatelessWidget {
@@ -39,7 +39,7 @@ class GreetingWidget extends StatelessWidget {
                 Text(
                   '${controller.greeting.value},',
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Colors.white70,
                     fontWeight: FontWeight.w500,
                   ),
@@ -63,9 +63,9 @@ class GreetingWidget extends StatelessWidget {
                     ),
                     const SizedBox(width: 6),
                     Text(
-                      controller.formattedDate.value,
+                      '${controller.dayName.value}, ${controller.formattedDate.value}',
                       style: const TextStyle(
-                        fontSize: 14,
+                        fontSize: 15,
                         color: Colors.white70,
                       ),
                     ),

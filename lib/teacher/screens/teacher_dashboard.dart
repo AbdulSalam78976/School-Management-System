@@ -1,16 +1,17 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:school_app/common/components/custom_appbar_widget.dart';
-import 'package:school_app/common/components/custom_drawer.dart';
-import 'package:school_app/common/components/greeting_widget.dart';
-import 'package:school_app/common/utils/utils.dart';
+import 'package:school_app/common/components/appbar/custom_appbar_widget.dart';
+import 'package:school_app/common/components/custom_card_widget.dart';
+import 'package:school_app/common/components/drawer/custom_drawer.dart';
+import 'package:school_app/common/components/greetingcard/greeting_widget.dart';
+import 'package:school_app/common/components/section_header_with_action.dart';
+import 'package:school_app/common/components/upcoming%20classes/upcoming_class_tile.dart';
+import 'package:school_app/common/components/upcoming%20classes/upcoming_classes_widget.dart';
+import 'package:school_app/common/resources/theme/colors.dart';
 import 'package:school_app/teacher/screens/screens%20controller/teacher_dashboard_controller.dart';
 import 'package:school_app/teacher/data/teacher_drawer_data.dart';
-import 'package:school_app/common/controllers/drawer_controller.dart';
-import 'package:school_app/common/controllers/appbar_controller.dart';
+import 'package:school_app/common/components/drawer/drawer_controller.dart';
+import 'package:school_app/common/components/appbar/appbar_controller.dart';
 
 class TeacherHomeScreen extends StatelessWidget {
   const TeacherHomeScreen({super.key});
@@ -40,7 +41,11 @@ class TeacherHomeScreen extends StatelessWidget {
             scrollDirection: Axis.vertical,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [const GreetingWidget(), const SizedBox(height: 30)],
+              children: [
+                const GreetingWidget(),
+                const SizedBox(height: 10),
+                UpcomingClassesWidget(),
+              ],
             ),
           ),
         ),

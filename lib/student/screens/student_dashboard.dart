@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:school_app/common/components/custom_appbar_widget.dart';
-import 'package:school_app/common/components/custom_drawer.dart';
-import 'package:school_app/common/components/greeting_widget.dart';
-import 'package:school_app/common/controllers/appbar_controller.dart';
-import 'package:school_app/common/controllers/drawer_controller.dart';
+import 'package:school_app/common/components/appbar/custom_appbar_widget.dart';
+import 'package:school_app/common/components/drawer/custom_drawer.dart';
+import 'package:school_app/common/components/greetingcard/greeting_widget.dart';
+import 'package:school_app/common/components/appbar/appbar_controller.dart';
+import 'package:school_app/common/components/drawer/drawer_controller.dart';
 import 'package:school_app/student/screens/screens_controller/student_dashboard_controller.dart';
 import 'package:school_app/student/data/student_drawer_data.dart';
 

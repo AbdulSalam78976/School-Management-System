@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:school_app/common/models/drawer_model.dart';
+import 'package:school_app/common/components/drawer/drawer_model.dart';
 
 class DrawerControllerCustom extends GetxController {
   final RxString userName = ''.obs;

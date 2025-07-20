@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:school_app/common/components/loading_widget.dart';
+import 'package:school_app/common/components/loadingwidget/loading_widget.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
 import 'package:school_app/common/utils/utils.dart';
 import 'package:get/get.dart';
@@ -36,9 +36,10 @@ class LoginScreen extends StatelessWidget {
                   key: _formKey,
                   child: Obx(
                     () => Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        SizedBox(height: 100),
                         SvgPicture.asset(
                           "assets/images/school.svg",
                           width: 250,

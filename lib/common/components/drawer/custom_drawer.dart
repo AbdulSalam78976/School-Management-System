@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:school_app/common/controllers/drawer_controller.dart';
-import 'package:school_app/common/models/drawer_model.dart';
+import 'package:school_app/common/components/drawer/drawer_controller.dart';
+import 'package:school_app/common/components/drawer/drawer_model.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
 
 class CustomDrawer extends StatelessWidget {

@@ -6,6 +6,7 @@ class GreetingController extends GetxController {
   final RxString greeting = ''.obs;
   final RxString formattedDate = ''.obs;
   final RxString name = ''.obs;
+  final RxString dayName = ''.obs;
 
   final RxBool isLoading = true.obs;
   final RxString error = ''.obs;
@@ -32,6 +33,7 @@ class GreetingController extends GetxController {
   void _setFormattedDate() {
     final now = DateTime.now();
     formattedDate.value = DateFormat('d MMM, yyyy').format(now);
+    dayName.value = DateFormat('E').format(now);
   }
 
   Future<void> fetchName() async {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_app/common/resources/theme/app_theme.dart';
 import 'package:school_app/common/login/screen/login_screen.dart';
+import 'package:school_app/common/resources/theme/routes/routes.dart';
 import 'package:school_app/student/screens/student_dashboard.dart';
 import 'package:school_app/teacher/screens/teacher_dashboard.dart';
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'School Management App',
       theme: AppTheme,
-      home: StudentHomeScreen(),
+      home: TeacherHomeScreen(),
+      //getPages: AppRoutes.appRoutes(),
     );
   }
 }

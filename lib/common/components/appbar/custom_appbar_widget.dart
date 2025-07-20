@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
-import 'package:school_app/common/controllers/appbar_controller.dart';
+import 'package:school_app/common/components/appbar/appbar_controller.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
