@@ -14,7 +14,12 @@ class AnnouncementsWidget extends StatelessWidget {
     );
     return Column(
       children: [
-        SectionHeaderWithAction(title: 'Recent Announcements', onTap: () {}),
+        SectionHeaderWithAction(
+          title: 'Recent Announcements',
+          onTap: () {
+            Get.toNamed('/teacher_announcement_Screen');
+          },
+        ),
         const SizedBox(height: 10),
         Obx(
           () => ListView.builder(

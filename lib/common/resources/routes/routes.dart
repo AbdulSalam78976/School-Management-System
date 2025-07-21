@@ -2,7 +2,12 @@ import 'package:get/get.dart';
 import 'package:school_app/common/login/screen/login_screen.dart';
 import 'package:school_app/common/resources/routes/route_names.dart';
 import 'package:school_app/student/screens/student_dashboard.dart';
-import 'package:school_app/teacher/screens/teacher_dashboard.dart';
+import 'package:school_app/teacher/screens/announcements%20screen/announcements_binding.dart';
+import 'package:school_app/teacher/screens/announcements%20screen/announcements_screen.dart';
+import 'package:school_app/teacher/screens/attendance/attendance_binding.dart';
+import 'package:school_app/teacher/screens/attendance/attendance_screen.dart';
+import 'package:school_app/teacher/screens/home%20screen/teacher_dashboard.dart';
+import 'package:school_app/teacher/screens/home%20screen/teacher_home_binding.dart';
 
 class AppRoutes {
   static appRoutes() => [
@@ -14,13 +19,28 @@ class AppRoutes {
     ),
     GetPage(
       name: RouteName.teacherHomeScreen,
-      page: () => TeacherHomeScreen(),
+      page: () => const TeacherHomeScreen(),
+      binding: TeacherHomeBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),
     GetPage(
       name: RouteName.studentHomeScreen,
-      page: () => StudentHomeScreen(),
+      page: () => const StudentHomeScreen(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: RouteName.teacherannouncementScreen,
+      page: () => const TeacherAnnouncementsScreen(),
+      binding: TeacherAnnouncementsBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: RouteName.teacherAttendanceScreen,
+      page: () => const TeacherAttendanceScreen(),
+      binding: AttendanceBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),

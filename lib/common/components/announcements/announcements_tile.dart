@@ -10,7 +10,7 @@ class AnnouncementsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 5.0),
+      margin: const EdgeInsets.only(bottom: 8.0),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -19,6 +19,9 @@ class AnnouncementsTile extends StatelessWidget {
           colors: [AppPalette.borderColor, AppPalette.secondaryColor],
         ),
         borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(color: Colors.black26, blurRadius: 4, offset: Offset(2, 8)),
+        ],
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,6 +34,7 @@ class AnnouncementsTile extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
             ),
+
             child: const Icon(Icons.campaign_outlined),
           ),
           const SizedBox(width: 12),

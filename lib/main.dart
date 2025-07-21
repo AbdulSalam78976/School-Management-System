@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:school_app/common/resources/bindings/app_binding.dart';
+import 'package:school_app/common/resources/routes/route_names.dart';
 import 'package:school_app/common/resources/theme/app_theme.dart';
-import 'package:school_app/teacher/screens/teacher_dashboard.dart';
-
-import 'common/login/screen/login_screen.dart';
 import 'common/resources/routes/routes.dart';
 
 void main() {
@@ -20,8 +19,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'School Management App',
       theme: AppTheme,
-      home: TeacherHomeScreen(),
-      //getPages: AppRoutes.appRoutes(),
+      initialBinding: AppBinding(),
+      initialRoute: RouteName.teacherHomeScreen,
+      getPages: AppRoutes.appRoutes(),
     );
   }
 }

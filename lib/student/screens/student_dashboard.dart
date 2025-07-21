@@ -7,7 +7,7 @@ import 'package:school_app/common/components/drawer/custom_drawer.dart';
 import 'package:school_app/common/components/greetingcard/greeting_widget.dart';
 import 'package:school_app/common/components/appbar/appbar_controller.dart';
 import 'package:school_app/common/components/drawer/drawer_controller.dart';
-import 'package:school_app/student/screens/screens_controller/student_dashboard_controller.dart';
+
 import 'package:school_app/student/data/student_drawer_data.dart';
 
 class StudentHomeScreen extends StatelessWidget {
@@ -18,13 +18,10 @@ class StudentHomeScreen extends StatelessWidget {
     // Set up controllers
     final drawerController = Get.put(DrawerControllerCustom());
     final appBarController = Get.put(AppBarController());
-    final studentDashboardController = Get.put(StudentDashboardController());
 
     // Initialize controller state (mock data for demo)
     drawerController.setUserName('Student Name');
-    drawerController.setItems(
-      StudentDrawerData.getStudentDrawerItems(studentDashboardController),
-    );
+    drawerController.setItems(StudentDrawerData.getStudentDrawerItems());
     appBarController.setTitle('Dashboard');
 
     return Scaffold(

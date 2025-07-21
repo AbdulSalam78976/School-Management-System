@@ -16,7 +16,7 @@ class UpcomingClassTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 5.0),
+      margin: const EdgeInsets.only(bottom: 8.0),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -24,6 +24,9 @@ class UpcomingClassTile extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: [AppPalette.borderColor, AppPalette.secondaryColor],
         ),
+        boxShadow: [
+          BoxShadow(color: Colors.black26, blurRadius: 4, offset: Offset(2, 8)),
+        ],
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(

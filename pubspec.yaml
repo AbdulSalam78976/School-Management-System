@@ -41,6 +41,7 @@ dependencies:
   lottie:
   google_fonts:
   intl: 
+  table_calendar: ^3.2.0
 
 
 dev_dependencies:

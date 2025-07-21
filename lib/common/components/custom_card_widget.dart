@@ -18,6 +18,9 @@ class CustomCardWidget extends StatelessWidget {
           colors: [AppPalette.borderColor, AppPalette.secondaryColor],
         ),
         borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(color: Colors.black26, blurRadius: 4, offset: Offset(2, 8)),
+        ],
       ),
 
       child: Padding(

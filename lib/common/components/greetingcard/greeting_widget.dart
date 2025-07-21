@@ -9,7 +9,7 @@ class GreetingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(GreetingController());
+    final controller = Get.find<GreetingController>();
 
     return Obx(
       () => Container(
@@ -24,8 +24,8 @@ class GreetingWidget extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.black26,
-              blurRadius: 8,
-              offset: Offset(0, 4),
+              blurRadius: 4,
+              offset: Offset(2, 8),
             ),
           ],
         ),

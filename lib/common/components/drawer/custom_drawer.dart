@@ -8,7 +8,7 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(DrawerControllerCustom());
+    final controller = Get.find<DrawerControllerCustom>();
     return Obx(
       () => Drawer(
         child: Container(

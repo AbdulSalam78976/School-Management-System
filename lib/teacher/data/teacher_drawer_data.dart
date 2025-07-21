@@ -1,69 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_app/common/components/drawer/drawer_model.dart';
-import 'package:school_app/teacher/screens/screens%20controller/teacher_dashboard_controller.dart';
+import 'package:school_app/common/resources/routes/route_names.dart';
 
 class TeacherDrawerData {
-  static List<DrawerModel> getTeacherDrawerItems(
-    TeacherDashboardController controller,
-  ) => [
+  static List<DrawerModel> getTeacherDrawerItems() => [
     DrawerModel(
       icon: Icons.dashboard_outlined,
       title: 'Dashboard',
-      isActive: controller.activeDrawerIndex.value == 0,
+      isActive: false, // This will be managed by the controller
       onTap: () {
-        controller.setActiveIndex(0);
-        // Navigate to dashboard or stay on current screen
+        // If on another screen, navigate to home, clearing the stack.
+        if (Get.currentRoute != RouteName.teacherHomeScreen) {
+          Get.offAllNamed(RouteName.teacherHomeScreen);
+        }
       },
     ),
     DrawerModel(
       icon: Icons.class_outlined,
       title: 'Classes',
-      isActive: controller.activeDrawerIndex.value == 1,
+      isActive: false,
       onTap: () {
-        controller.setActiveIndex(1);
-        // Navigate to classes screen
-       // Get.toNamed('/classes');
+        // Get.toNamed('/classes');
       },
     ),
     DrawerModel(
       icon: Icons.calendar_today_outlined,
       title: 'Attendance',
-      isActive: controller.activeDrawerIndex.value == 2,
+      isActive: false,
       onTap: () {
-        controller.setActiveIndex(2);
-        // Navigate to attendance screen
-       // Get.toNamed('/attendance');
+        Get.toNamed(RouteName.teacherAttendanceScreen);
       },
     ),
     DrawerModel(
       icon: Icons.message_outlined,
       title: 'Messages',
-      isActive: controller.activeDrawerIndex.value == 3,
+      isActive: false,
       onTap: () {
-        controller.setActiveIndex(3);
-        // Navigate to messages screen
-       // Get.toNamed('/messages');
+        // Get.toNamed('/messages');
       },
     ),
     DrawerModel(
       icon: Icons.announcement_outlined,
       title: 'Announcements',
-      isActive: controller.activeDrawerIndex.value == 5,
+      isActive: false,
       onTap: () {
-        controller.setActiveIndex(5);
-        // Navigate to help screen
-        //Get.toNamed('/help');
+        Get.offAllNamed(RouteName.teacherannouncementScreen);
       },
     ),
     DrawerModel(
       icon: Icons.settings_outlined,
       title: 'Settings',
-      isActive: controller.activeDrawerIndex.value == 4,
+      isActive: false,
       onTap: () {
-        controller.setActiveIndex(4);
-        // Navigate to settings screen
-       // Get.toNamed('/settings');
+        // Get.toNamed('/settings');
       },
     ),
   ];

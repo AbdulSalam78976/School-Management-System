@@ -26,7 +26,7 @@ class QuickActionsWidget extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
-              childAspectRatio: 1.5,
+              childAspectRatio: 1.4,
             ),
             itemBuilder: (context, index) {
               final item = controller.quickActions[index];
