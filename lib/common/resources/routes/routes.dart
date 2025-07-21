@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:school_app/common/login/screen/login_screen.dart';
-import 'package:school_app/common/resources/theme/routes/route_names.dart';
+import 'package:school_app/common/resources/routes/route_names.dart';
 import 'package:school_app/student/screens/student_dashboard.dart';
 import 'package:school_app/teacher/screens/teacher_dashboard.dart';
 

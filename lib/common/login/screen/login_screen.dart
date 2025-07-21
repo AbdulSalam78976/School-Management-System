@@ -35,121 +35,126 @@ class LoginScreen extends StatelessWidget {
                 child: Form(
                   key: _formKey,
                   child: Obx(
-                    () => Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 100),
-                        SvgPicture.asset(
-                          "assets/images/school.svg",
-                          width: 250,
-                          height: 250,
-                          semanticsLabel: 'School Logo',
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          'Welcome Back!',
-                          style: theme.textTheme.titleLarge,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Please login to continue',
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: AppPalette.greyColor,
-                            fontWeight: FontWeight.normal,
+                    () => SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      physics: const BouncingScrollPhysics(),
+                      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(height: 40),
+                          SvgPicture.asset(
+                            "assets/images/school.svg",
+                            width: 250,
+                            height: 250,
+                            semanticsLabel: 'School Logo',
                           ),
-                        ),
-                        const SizedBox(height: 30),
-
-                        // Email Field
-                        TextFormField(
-                          controller: controller.emailController,
-                          decoration: InputDecoration(
-                            labelText: 'Email',
-                            prefixIcon: const Icon(
-                              Icons.email,
-                              color: AppPalette.secondaryColor,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
+                          const SizedBox(height: 20),
+                          Text(
+                            'Welcome Back!',
+                            style: theme.textTheme.titleLarge,
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Please login to continue',
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: AppPalette.greyColor,
+                              fontWeight: FontWeight.normal,
                             ),
                           ),
-                          keyboardType: TextInputType.emailAddress,
-                          validator: (value) {
-                            if (value == null || value.trim().isEmpty) {
-                              return 'Please enter your email';
-                            }
-                            if (!Utils.isEmail(value.trim())) {
-                              return 'Enter a valid email address';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16),
+                          const SizedBox(height: 30),
 
-                        // Password Field
-                        Obx(
-                          () => TextFormField(
-                            controller: controller.passwordController,
+                          // Email Field
+                          TextFormField(
+                            controller: controller.emailController,
                             decoration: InputDecoration(
-                              labelText: 'Password',
+                              labelText: 'Email',
                               prefixIcon: const Icon(
-                                Icons.lock,
+                                Icons.email,
                                 color: AppPalette.secondaryColor,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              suffixIcon: IconButton(
-                                icon: Padding(
-                                  padding: const EdgeInsets.only(right: 8.0),
-                                  child: Icon(
-                                    color: AppPalette.secondaryColor,
-                                    controller.obscureText.value
-                                        ? Icons.visibility_off
-                                        : Icons.visibility,
-                                  ),
-                                ),
-                                onPressed: controller.toggleObscureText,
-                              ),
                             ),
-                            obscureText: controller.obscureText.value,
+                            keyboardType: TextInputType.emailAddress,
                             validator: (value) {
                               if (value == null || value.trim().isEmpty) {
-                                return 'Please enter your password';
+                                return 'Please enter your email';
+                              }
+                              if (!Utils.isEmail(value.trim())) {
+                                return 'Enter a valid email address';
                               }
                               return null;
                             },
                           ),
-                        ),
-                        const SizedBox(height: 24),
+                          const SizedBox(height: 16),
 
-                        // Login Button
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: controller.isLoading.value
-                                ? null
-                                : () {
-                                    if (_formKey.currentState!.validate()) {
-                                      controller.login();
-                                    }
-                                  },
-                            child: const Text('Login'),
+                          // Password Field
+                          Obx(
+                            () => TextFormField(
+                              controller: controller.passwordController,
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                prefixIcon: const Icon(
+                                  Icons.lock,
+                                  color: AppPalette.secondaryColor,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                suffixIcon: IconButton(
+                                  icon: Padding(
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: Icon(
+                                      color: AppPalette.secondaryColor,
+                                      controller.obscureText.value
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
+                                    ),
+                                  ),
+                                  onPressed: controller.toggleObscureText,
+                                ),
+                              ),
+                              obscureText: controller.obscureText.value,
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Please enter your password';
+                                }
+                                return null;
+                              },
+                            ),
                           ),
-                        ),
+                          const SizedBox(height: 24),
 
-                        // Forgot Password
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: TextButton(
-                            onPressed: controller.isLoading.value
-                                ? null
-                                : () {},
-                            child: const Text('Forgot Password?'),
+                          // Login Button
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: controller.isLoading.value
+                                  ? null
+                                  : () {
+                                      if (_formKey.currentState!.validate()) {
+                                        controller.login();
+                                      }
+                                    },
+                              child: const Text('Login'),
+                            ),
                           ),
-                        ),
-                      ],
+
+                          // Forgot Password
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: TextButton(
+                              onPressed: controller.isLoading.value
+                                  ? null
+                                  : () {},
+                              child: const Text('Forgot Password?'),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

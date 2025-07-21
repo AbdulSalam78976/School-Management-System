@@ -19,8 +19,8 @@ class UpcomingClassTile extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 5.0),
 
       decoration: BoxDecoration(
-        color: AppPalette.accentColor,
-        borderRadius: BorderRadius.circular(12),
+        color: AppPalette.secondaryColor,
+        borderRadius: BorderRadius.circular(20),
       ),
       child: ListTile(
         dense: true,

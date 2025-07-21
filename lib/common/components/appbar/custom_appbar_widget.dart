@@ -27,22 +27,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   Scaffold.of(context).openDrawer();
                 },
               ),
+
               // Center title
-              Expanded(
-                child: Center(
-                  child: Text(
-                    controller.title.value,
-                    style: GoogleFonts.bebasNeue(
-                      color: AppPalette.primaryColor,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 2,
-                    ),
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
+              Center(
+                child: Text(
+                  controller.title.value,
+                  style: GoogleFonts.bebasNeue(
+                    color: AppPalette.primaryColor,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 2,
                   ),
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
+
               // Notification and profile
               Row(
                 children: [
@@ -76,7 +76,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         ),
                     ],
                   ),
-                  const SizedBox(width: 8),
+
                   CircleAvatar(
                     radius: 22,
                     backgroundColor: controller.profileImage.value.isEmpty

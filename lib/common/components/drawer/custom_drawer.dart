@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_app/common/components/drawer/drawer_controller.dart';
-import 'package:school_app/common/components/drawer/drawer_model.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -67,7 +66,7 @@ class CustomDrawer extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final item = controller.items[index];
                     return Container(
-                      margin: const EdgeInsets.symmetric(vertical: 4),
+                      margin: const EdgeInsets.symmetric(vertical: 2),
                       decoration: BoxDecoration(
                         color: item.isActive
                             ? AppPalette.secondaryColor
@@ -98,7 +97,7 @@ class CustomDrawer extends StatelessWidget {
                         },
                         contentPadding: const EdgeInsets.symmetric(
                           horizontal: 16,
-                          vertical: 8,
+                          vertical: 4,
                         ),
                       ),
                     );
@@ -107,7 +106,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               // Logout Button at bottom
               Container(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(16),
                 child: Container(
                   decoration: BoxDecoration(
                     color: AppPalette.errorColor,
@@ -130,7 +129,7 @@ class CustomDrawer extends StatelessWidget {
                     onTap: controller.logout,
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 16,
-                      vertical: 8,
+                      vertical: 4,
                     ),
                   ),
                 ),

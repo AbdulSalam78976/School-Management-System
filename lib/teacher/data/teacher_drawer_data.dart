@@ -23,7 +23,7 @@ class TeacherDrawerData {
       onTap: () {
         controller.setActiveIndex(1);
         // Navigate to classes screen
-        Get.toNamed('/classes');
+       // Get.toNamed('/classes');
       },
     ),
     DrawerModel(
@@ -33,7 +33,7 @@ class TeacherDrawerData {
       onTap: () {
         controller.setActiveIndex(2);
         // Navigate to attendance screen
-        Get.toNamed('/attendance');
+       // Get.toNamed('/attendance');
       },
     ),
     DrawerModel(
@@ -43,7 +43,7 @@ class TeacherDrawerData {
       onTap: () {
         controller.setActiveIndex(3);
         // Navigate to messages screen
-        Get.toNamed('/messages');
+       // Get.toNamed('/messages');
       },
     ),
     DrawerModel(
@@ -53,7 +53,7 @@ class TeacherDrawerData {
       onTap: () {
         controller.setActiveIndex(5);
         // Navigate to help screen
-        Get.toNamed('/help');
+        //Get.toNamed('/help');
       },
     ),
     DrawerModel(
@@ -63,7 +63,7 @@ class TeacherDrawerData {
       onTap: () {
         controller.setActiveIndex(4);
         // Navigate to settings screen
-        Get.toNamed('/settings');
+       // Get.toNamed('/settings');
       },
     ),
   ];
