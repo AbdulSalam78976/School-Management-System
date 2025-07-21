@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:school_app/common/components/announcements/announcements_model.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
 
-class RecentAnnouncements extends StatelessWidget {
-  const RecentAnnouncements({super.key});
+class AnnouncementsTile extends StatelessWidget {
+  final AnnouncementsModel announcement;
+
+  const AnnouncementsTile({super.key, required this.announcement});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +13,11 @@ class RecentAnnouncements extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 5.0),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppPalette.secondaryColor,
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [AppPalette.borderColor, AppPalette.secondaryColor],
+        ),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -27,7 +34,6 @@ class RecentAnnouncements extends StatelessWidget {
             child: const Icon(Icons.campaign_outlined),
           ),
           const SizedBox(width: 12),
-
           // Announcement Details with time on right
           Expanded(
             child: Column(
@@ -36,11 +42,11 @@ class RecentAnnouncements extends StatelessWidget {
                 // Title and time in same row
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     Expanded(
                       child: Text(
-                        'Holiday Announcement',
-                        style: TextStyle(
+                        announcement.title,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           color: Colors.white,
@@ -48,17 +54,20 @@ class RecentAnnouncements extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Text(
-                      '2 days ago',
-                      style: TextStyle(color: Colors.white70, fontSize: 12),
+                      announcement.date,
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 12,
+                      ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 6),
-                const Text(
-                  'School will be closed next Monday due to a public                                 holiday.',
-                  style: TextStyle(
+                Text(
+                  announcement.description,
+                  style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 14,
                     height: 1.3,

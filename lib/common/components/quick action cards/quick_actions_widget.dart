@@ -21,12 +21,12 @@ class QuickActionsWidget extends StatelessWidget {
             itemCount: controller.quickActions.length,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.symmetric(vertical: 20),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
-              childAspectRatio: 1.3,
+              childAspectRatio: 1.5,
             ),
             itemBuilder: (context, index) {
               final item = controller.quickActions[index];

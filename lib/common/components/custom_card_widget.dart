@@ -10,21 +10,19 @@ class CustomCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-
-    return SizedBox(
-      width: width / 2.5,
-      height: height / 7,
-      child: Material(
-        shadowColor: AppPalette.primaryColor,
-        elevation: 2,
-        color: AppPalette.secondaryColor,
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: padding ?? const EdgeInsets.all(12),
-          child: child,
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [AppPalette.borderColor, AppPalette.secondaryColor],
         ),
+        borderRadius: BorderRadius.circular(12),
+      ),
+
+      child: Padding(
+        padding: padding ?? const EdgeInsets.all(12),
+        child: child,
       ),
     );
   }

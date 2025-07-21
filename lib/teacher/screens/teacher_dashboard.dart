@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:school_app/common/components/announcements_widget.dart';
+import 'package:school_app/common/components/announcements/announcements_controller.dart';
+import 'package:school_app/common/components/announcements/announcements_model.dart';
+import 'package:school_app/common/components/announcements/recent_announcements_widget.dart';
 import 'package:school_app/common/components/appbar/custom_appbar_widget.dart';
 import 'package:school_app/common/components/custom_card_widget.dart';
 import 'package:school_app/common/components/drawer/custom_drawer.dart';
@@ -32,6 +34,7 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
   final teacherDashboardController = Get.put(TeacherDashboardController());
   final quickActionCardController = Get.put(QuickActionCardController());
   final upcomingClassesController = Get.put(UpcomingClassesController());
+  final announcementsController = Get.put(AnnouncementsController());
 
   @override
   void initState() {
@@ -88,6 +91,22 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
       ),
     ];
     upcomingClassesController.setUpcomingClasses(upcomingClasses);
+
+    // Create and set announcements list
+    final announcements = [
+      AnnouncementsModel(
+        title: 'Art Competition',
+        description:
+            'The annual art competition is next month. Submit your entries by the 5th.',
+        date: '3 days ago',
+      ),
+      AnnouncementsModel(
+        title: 'Library Closure',
+        description: 'The library will be closed for renovations from Monday.',
+        date: '4 days ago',
+      ),
+    ];
+    announcementsController.setAnnouncements(announcements);
   }
 
   @override
@@ -106,14 +125,10 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
                 const GreetingWidget(),
                 const SizedBox(height: 20),
                 QuickActionsWidget(),
+
+                const UpcomingClassesWidget(),
                 const SizedBox(height: 20),
-                UpcomingClassesWidget(),
-                const SizedBox(height: 20),
-                SectionHeaderWithAction(
-                  title: 'Recent Announcements',
-                  onTap: () {},
-                ),
-                RecentAnnouncements(),
+                const AnnouncementsWidget(),
               ],
             ),
           ),

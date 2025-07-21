@@ -17,41 +17,51 @@ class UpcomingClassTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 5.0),
-
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppPalette.secondaryColor,
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [AppPalette.borderColor, AppPalette.secondaryColor],
+        ),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: ListTile(
-        dense: true,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16.0,
-          vertical: 8.0,
-        ),
-        leading: CircleAvatar(
-          backgroundColor: Colors.white,
-          child: const Icon(
-            Icons.watch_later_outlined,
-            color: AppPalette.primaryColor,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Icon Container
+          Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: const Icon(Icons.watch_later_outlined),
           ),
-        ),
-        title: Text(
-          "$time",
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1.5,
-            fontSize: 18,
-            color: Colors.white,
+          const SizedBox(width: 12),
+          // Class Details
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  time,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '$subject, $grade',
+                  style: const TextStyle(color: Colors.white70, fontSize: 14),
+                ),
+              ],
+            ),
           ),
-        ),
-        subtitle: Text(
-          '$subject, $grade',
-          style: const TextStyle(
-            color: Colors.white70,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+        ],
       ),
     );
   }
