@@ -42,7 +42,7 @@ dependencies:
   google_fonts:
   intl: 
   table_calendar: ^3.2.0
-  file_picker: ^6.1.1
+  file_picker: ^10.2.0
 
 
 

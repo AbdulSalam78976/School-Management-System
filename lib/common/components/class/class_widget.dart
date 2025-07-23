@@ -28,10 +28,10 @@ class ClassCard extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(20),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            colors: [AppPalette.accentColor, AppPalette.secondaryColor],
+            colors: [AppPalette.secondaryColor, AppPalette.accentColor],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -53,7 +53,7 @@ class ClassCard extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   "assets/icons/class.svg", // Add the correct path
-                  height: 50,
+                  height: 60,
                   colorFilter: const ColorFilter.mode(
                     Colors.white,
                     BlendMode.srcIn,
@@ -139,7 +139,7 @@ class ClassCard extends StatelessWidget {
                         child: const Icon(
                           Icons.assignment_turned_in,
                           size: 24,
-                          color: Color(0xFFFD6F61),
+                          color: Colors.blueAccent,
                         ),
                       ),
                     ),

@@ -92,7 +92,7 @@ final AppTheme = ThemeData(
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
-    fillColor: AppPalette.backgroundColor,
+    fillColor: const Color(0xFFF2F6F4),
     contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),

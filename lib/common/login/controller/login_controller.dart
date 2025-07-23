@@ -32,9 +32,6 @@ class LoginController extends GetxController {
       isLoading.value = false;
       // Navigate to the dashboard screen
       Get.toNamed(RouteName.teacherHomeScreen);
-
-
-
     });
-        }
+  }
 }

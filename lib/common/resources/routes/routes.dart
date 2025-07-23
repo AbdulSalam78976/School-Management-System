@@ -8,6 +8,8 @@ import 'package:school_app/teacher/screens/attendance/attendance_binding.dart';
 import 'package:school_app/teacher/screens/attendance/attendance_screen.dart';
 import 'package:school_app/teacher/screens/classes/assignment/assignment_binding.dart';
 import 'package:school_app/teacher/screens/classes/assignment/assignment_screen.dart';
+import 'package:school_app/teacher/screens/classes/assignment/assignment_submission_detail_screen.dart';
+import 'package:school_app/teacher/screens/classes/assignment/assignment_submissions_screen.dart';
 import 'package:school_app/teacher/screens/classes/classes_binding.dart';
 import 'package:school_app/teacher/screens/classes/classes_screen.dart';
 import 'package:school_app/teacher/screens/home%20screen/teacher_dashboard.dart';
@@ -59,6 +61,21 @@ class AppRoutes {
     GetPage(
       name: RouteName.teacherAssignmentScreen,
       page: () => const TeacherAssignmentScreen(),
+      binding: AssignmentBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+
+    GetPage(
+      name: RouteName.assignmentSubmissionsScreen,
+      page: () => AssignmentSubmissionsScreen(),
+      binding: AssignmentBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: RouteName.assignmentSubmissionsDetailScreen,
+      page: () => AssignmentSubmissionDetailScreen(),
       binding: AssignmentBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,

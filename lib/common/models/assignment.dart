@@ -4,13 +4,17 @@ class AssignmentSubmission {
   final String studentId;
   bool isSubmitted;
   DateTime? submissionDate;
-  num? marksObtained;
+  int? marksObtained;
+  List<PlatformFile> files;
+  final String? feedback;
 
   AssignmentSubmission({
     required this.studentId,
     this.isSubmitted = false,
     this.submissionDate,
     this.marksObtained,
+    this.files = const [],
+    this.feedback,
   });
 }
 
@@ -31,8 +35,6 @@ class Assignment {
   final DateTime? submissionDate;
   final List<AssignmentSubmission> submissions;
 
-  final String? feedback; // Optional teacher feedback
-
   Assignment({
     required this.id,
     required this.title,
@@ -47,7 +49,7 @@ class Assignment {
     this.attachments,
     this.isSubmitted = false,
     this.submissionDate,
-    this.feedback,
+
     required this.assignedTime,
     this.submissions = const [],
   });

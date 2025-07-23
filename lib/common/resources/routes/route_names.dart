@@ -9,4 +9,9 @@ class RouteName {
   static const String teacherAttendanceScreen = '/teacher_attendance_Screen';
   static const String teacherClassesScreen = '/teacher_classes_Screen';
   static const String teacherAssignmentScreen = '/teacher_assignment_Screen';
+
+  static const String assignmentSubmissionsScreen =
+      '/assignmentSubmissionsScreen';
+  static const String assignmentSubmissionsDetailScreen =
+      '/assignmentSubmissionsDetailScreen';
 }

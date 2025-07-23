@@ -10,17 +10,20 @@ class TeacherAssignmentController extends GetxController {
   final DrawerControllerCustom drawerController =
       Get.find<DrawerControllerCustom>();
 
-  final titleController = TextEditingController().obs;
-  final descriptionController = TextEditingController().obs;
+  final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
 
   final attachments = <PlatformFile>[].obs;
 
   // Add a controller for total marks
-  TextEditingController? totalMarksController;
+  TextEditingController totalMarksController = TextEditingController();
 
   final isAssigned = false.obs;
   final Rxn<DateTime> dueDate = Rxn<DateTime>();
   final Rxn<TimeOfDay> dueTime = Rxn<TimeOfDay>();
+
+  final obtainedmarksController = TextEditingController();
+  final feedbackController = TextEditingController();
 
   final RxList<Assignment> assignments = <Assignment>[].obs;
 
@@ -37,7 +40,7 @@ class TeacherAssignmentController extends GetxController {
   void onClose() {
     appBarController.setTitle('Dashboard');
     drawerController.setActiveIndex(0);
-    totalMarksController?.dispose();
+    totalMarksController.dispose();
     super.onClose();
   }
 
@@ -45,7 +48,6 @@ class TeacherAssignmentController extends GetxController {
   void onInit() {
     super.onInit();
     _loadAssignmentData();
-    totalMarksController = TextEditingController();
   }
 
   void setAssignments(List<Assignment> newAssignments) {
@@ -54,7 +56,6 @@ class TeacherAssignmentController extends GetxController {
 
   void addAssignment(Assignment newAssignment) {
     assignments.add(newAssignment);
-    totalMarksController?.clear();
   }
 
   void updateAssignment(Assignment updatedAssignment) {
@@ -114,7 +115,7 @@ class TeacherAssignmentController extends GetxController {
         totalMarks: assignment.totalMarks,
         attachments: assignment.attachments,
         submissions: submissions,
-        feedback: assignment.feedback,
+
         submissionDate: assignment.submissionDate,
       );
     }
@@ -135,6 +136,27 @@ class TeacherAssignmentController extends GetxController {
         : null;
   }
 
+  // Get students who have submitted the assignment
+  List<String> getSubmittedStudentIds(String assignmentId) {
+    final assignment = assignments.firstWhereOrNull(
+      (a) => a.id == assignmentId,
+    );
+    if (assignment == null) return [];
+    return assignment.submissions
+        .where((s) => s.isSubmitted)
+        .map((s) => s.studentId)
+        .toList();
+  }
+
+  // Get students who have NOT submitted the assignment
+  List<String> getNotSubmittedStudentIds(
+    String assignmentId,
+    List<String> allStudentIds,
+  ) {
+    final submittedIds = getSubmittedStudentIds(assignmentId).toSet();
+    return allStudentIds.where((id) => !submittedIds.contains(id)).toList();
+  }
+
   void _loadAssignmentData() {
     assignments.assignAll([
       Assignment(
@@ -152,6 +174,39 @@ class TeacherAssignmentController extends GetxController {
         subject: 'Mathematics', // replace with actual subject
         teacherId: '1', // replace with actual teacher ID
         totalMarks: 100,
+        submissions: [
+          AssignmentSubmission(
+            studentId: 's1',
+            isSubmitted: true,
+            submissionDate: DateTime.now().subtract(const Duration(days: 1)),
+            marksObtained: 90,
+            files: [
+              PlatformFile(
+                name: 'biology.png',
+                path: 'assets/images/biology.png',
+                size: 12345,
+              ),
+              PlatformFile(
+                name: 'report.pdf',
+                path: 'assets/files/report.pdf',
+                size: 23456,
+              ),
+            ],
+          ),
+          AssignmentSubmission(
+            studentId: 's2',
+            isSubmitted: false,
+            marksObtained: null,
+            files: [],
+          ),
+          AssignmentSubmission(
+            studentId: 's3',
+            isSubmitted: true,
+            submissionDate: DateTime.now().subtract(const Duration(hours: 5)),
+            marksObtained: 75,
+            files: [PlatformFile(name: 'maths.png', path: '', size: 12345)],
+          ),
+        ],
       ),
       Assignment(
         id: '2',
@@ -166,7 +221,80 @@ class TeacherAssignmentController extends GetxController {
         subject: 'Science',
         teacherId: '2',
         totalMarks: 100,
+        submissions: [
+          AssignmentSubmission(
+            studentId: 's1',
+            isSubmitted: false,
+            marksObtained: null,
+            files: [],
+          ),
+          AssignmentSubmission(
+            studentId: 's2',
+            isSubmitted: true,
+            submissionDate: DateTime.now().subtract(const Duration(days: 2)),
+            marksObtained: 88,
+            files: [
+              PlatformFile(name: 'chemistry.png', path: '', size: 12345),
+              PlatformFile(name: 'assignment2.pdf', path: '', size: 34567),
+            ],
+          ),
+          AssignmentSubmission(
+            studentId: 's3',
+            isSubmitted: false,
+            marksObtained: null,
+            files: [],
+          ),
+        ],
       ),
     ]);
+  }
+
+  void submitMarksAndFeedback({
+    required String assignmentId,
+    required String studentId,
+  }) {
+    final assignmentIndex = assignments.indexWhere((a) => a.id == assignmentId);
+    if (assignmentIndex == -1) return;
+
+    final assignment = assignments[assignmentIndex];
+    final updatedSubmissions = List<AssignmentSubmission>.from(
+      assignment.submissions,
+    );
+
+    final submissionIndex = updatedSubmissions.indexWhere(
+      (s) => s.studentId == studentId,
+    );
+
+    if (submissionIndex != -1) {
+      updatedSubmissions[submissionIndex] = AssignmentSubmission(
+        studentId: studentId,
+        marksObtained: int.tryParse(obtainedmarksController.text),
+
+        feedback: feedbackController.text,
+        isSubmitted: true,
+        submissionDate: DateTime.now(),
+        files: updatedSubmissions[submissionIndex].files,
+      );
+
+      assignments[assignmentIndex] = Assignment(
+        id: assignment.id,
+        title: assignment.title,
+        description: assignment.description,
+        classId: assignment.classId,
+        subject: assignment.subject,
+        totalMarks: assignment.totalMarks,
+        assignedDate: assignment.assignedDate,
+        assignedTime: assignment.assignedTime,
+        dueDate: assignment.dueDate,
+        dueTime: assignment.dueTime,
+        teacherId: assignment.teacherId,
+        attachments: assignment.attachments,
+        isSubmitted: assignment.isSubmitted,
+        submissionDate: assignment.submissionDate,
+        submissions: updatedSubmissions,
+      );
+
+      // For GetX reactive updates
+    }
   }
 }
