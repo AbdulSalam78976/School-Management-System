@@ -9,9 +9,9 @@ class Utils {
   ).format(DateTime.now());
 
   /// Show a custom snackbar
-  static void snackBar(
-    String title,
-    String message, {
+  static void snackBar({
+    required String title,
+    required String message,
     Color? backgroundColor,
     IconData? icon,
   }) {

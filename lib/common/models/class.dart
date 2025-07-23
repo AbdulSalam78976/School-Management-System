@@ -1,7 +1,7 @@
 import 'teacher.dart';
 import 'student.dart';
 
-class SchoolClass {
+class Class {
   final String id;
   final String name;
   final String section;
@@ -9,7 +9,7 @@ class SchoolClass {
   final Teacher teacher;
   final List<Student> students;
 
-  SchoolClass({
+  Class({
     required this.id,
     required this.name,
     required this.section,

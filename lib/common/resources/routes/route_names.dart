@@ -7,4 +7,6 @@ class RouteName {
   static const String teacherannouncementScreen =
       '/teacher_announcement_Screen';
   static const String teacherAttendanceScreen = '/teacher_attendance_Screen';
+  static const String teacherClassesScreen = '/teacher_classes_Screen';
+  static const String teacherAssignmentScreen = '/teacher_assignment_Screen';
 }

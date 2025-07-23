@@ -19,7 +19,7 @@ class TeacherAttendanceScreen extends StatelessWidget {
       drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 80.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Obx(
             () => Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -125,9 +125,9 @@ final AppTheme = ThemeData(
     space: 1,
   ),
   chipTheme: ChipThemeData(
-    backgroundColor: AppPalette.primaryColor,
+    backgroundColor: AppPalette.secondaryColor,
     disabledColor: AppPalette.greyColor,
-    selectedColor: AppPalette.secondaryColor,
+    selectedColor: AppPalette.primaryColor,
     secondarySelectedColor: AppPalette.primaryColor,
     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
     labelStyle: TextStyle(color: Colors.white),

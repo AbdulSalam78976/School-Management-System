@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:school_app/common/resources/theme/colors.dart';
 import 'package:school_app/teacher/screens/attendance/attendance_controller.dart';
-import 'package:school_app/common/models/user_model.dart';
 
 class StudentListView extends StatelessWidget {
   final AttendanceController controller = Get.find();

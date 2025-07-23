@@ -21,7 +21,7 @@ class TeacherDrawerData {
       title: 'Classes',
       isActive: false,
       onTap: () {
-        // Get.toNamed('/classes');
+        Get.toNamed(RouteName.teacherClassesScreen);
       },
     ),
     DrawerModel(
@@ -45,7 +45,7 @@ class TeacherDrawerData {
       title: 'Announcements',
       isActive: false,
       onTap: () {
-        Get.offAllNamed(RouteName.teacherannouncementScreen);
+        Get.toNamed(RouteName.teacherannouncementScreen);
       },
     ),
     DrawerModel(

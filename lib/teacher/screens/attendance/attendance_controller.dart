@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_app/common/components/appbar/appbar_controller.dart';
 import 'package:school_app/common/components/drawer/drawer_controller.dart';
-import 'package:school_app/common/models/user_model.dart';
+import 'package:school_app/common/models/class.dart';
+import 'package:school_app/common/models/student.dart';
+import 'package:school_app/common/models/teacher.dart';
 
 class AttendanceController extends GetxController {
   // Dependencies
@@ -15,7 +16,7 @@ class AttendanceController extends GetxController {
   final Rx<DateTime?> selectedDay = Rx<DateTime?>(null);
   final RxInt selectedClassIndex = 0.obs;
 
-  final RxList<SchoolClass> classData = <SchoolClass>[].obs;
+  final RxList<Class> classData = <Class>[].obs;
   final RxMap<String, String> attendanceStatus = <String, String>{}.obs;
 
   @override
@@ -46,7 +47,19 @@ class AttendanceController extends GetxController {
   void onDaySelected(DateTime newSelectedDay, DateTime newFocusedDay) {
     selectedDay.value = newSelectedDay;
     focusedDay.value = newFocusedDay;
-    // TODO: Fetch attendance for the new date
+
+    // Make API call to fetch attendance data for the new date
+    _fetchAttendanceData(newSelectedDay);
+  }
+
+  void _fetchAttendanceData(DateTime date) {
+    // Replace this with your actual API call or data retrieval logic
+    // For example:
+    // final response = await http.get(Uri.parse('https://your-api.com/attendance/${date.toString()}'));
+    // final attendanceData = jsonDecode(response.body);
+
+    // Update your attendanceStatus map with the new data
+    // attendanceStatus.assignAll(attendanceData);
   }
 
   void selectClass(int index) {
@@ -70,7 +83,7 @@ class AttendanceController extends GetxController {
     // This would typically be an API call.
     // For now, we'll use the same mock data.
     classData.assignAll([
-      SchoolClass(
+      Class(
         id: 'C01',
         name: 'All Classes',
         section: 'A',
@@ -79,7 +92,7 @@ class AttendanceController extends GetxController {
           id: 'T01',
           name: 'Ms. Harper',
           avatarUrl: '',
-          employeeId: 'E001',
+          major: '',
           subjects: [],
         ),
         students: [
@@ -127,7 +140,7 @@ class AttendanceController extends GetxController {
           ),
         ],
       ),
-      SchoolClass(
+      Class(
         id: 'C02',
         name: 'Math 101',
         section: 'A',
@@ -136,7 +149,7 @@ class AttendanceController extends GetxController {
           id: 'T01',
           name: 'Ms. Harper',
           avatarUrl: '',
-          employeeId: 'E001',
+          major: 'Math',
           subjects: ['Math'],
         ),
         students: [
@@ -156,7 +169,7 @@ class AttendanceController extends GetxController {
           ),
         ],
       ),
-      SchoolClass(
+      Class(
         id: 'C03',
         name: 'Science 202',
         section: 'B',
@@ -165,7 +178,7 @@ class AttendanceController extends GetxController {
           id: 'T02',
           name: 'Mr. Davison',
           avatarUrl: '',
-          employeeId: 'E002',
+          major: 'Science',
           subjects: ['Science'],
         ),
         students: [

@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_app/common/components/appbar/appbar_controller.dart';
 import 'package:school_app/common/components/drawer/drawer_controller.dart';
-import 'package:school_app/common/models/user_model.dart';
 import 'package:school_app/common/components/announcements/announcements_model.dart';
 
 class TeacherAnnouncementsController extends GetxController {
