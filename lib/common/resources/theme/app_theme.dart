@@ -136,7 +136,7 @@ final AppTheme = ThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: AppPalette.accentColor,
+    backgroundColor: AppPalette.secondaryColor,
     foregroundColor: AppPalette.whiteColor,
     elevation: 4,
   ),

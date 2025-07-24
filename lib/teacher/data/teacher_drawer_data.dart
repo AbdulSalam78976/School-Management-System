@@ -37,7 +37,7 @@ class TeacherDrawerData {
       title: 'Messages',
       isActive: false,
       onTap: () {
-        // Get.toNamed('/messages');
+        Get.toNamed(RouteName.teacherMessagesScreen);
       },
     ),
     DrawerModel(
@@ -53,7 +53,7 @@ class TeacherDrawerData {
       title: 'Settings',
       isActive: false,
       onTap: () {
-        // Get.toNamed('/settings');
+        Get.toNamed(RouteName.teacherSettingScreen);
       },
     ),
   ];

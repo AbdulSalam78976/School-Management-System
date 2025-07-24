@@ -77,26 +77,29 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ],
                   ),
 
-                  CircleAvatar(
-                    radius: 22,
-                    backgroundColor: controller.profileImage.value.isEmpty
-                        ? AppPalette.primaryColor
-                        : null,
-                    backgroundImage: controller.profileImage.value.isNotEmpty
-                        ? AssetImage(controller.profileImage.value)
-                        : null,
-                    child: controller.profileImage.value.isEmpty
-                        ? Text(
-                            controller.title.value.isNotEmpty
-                                ? controller.title.value[0].toUpperCase()
-                                : 'U',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                        : null,
+                  InkWell(
+                    //onTap: () => Get.toNamed(RouteName.profileScreen),
+                    child: CircleAvatar(
+                      radius: 22,
+                      backgroundColor: controller.profileImage.value.isEmpty
+                          ? AppPalette.primaryColor
+                          : null,
+                      backgroundImage: controller.profileImage.value.isNotEmpty
+                          ? AssetImage(controller.profileImage.value)
+                          : null,
+                      child: controller.profileImage.value.isEmpty
+                          ? Text(
+                              controller.title.value.isNotEmpty
+                                  ? controller.title.value[0].toUpperCase()
+                                  : 'U',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          : null,
+                    ),
                   ),
                 ],
               ),

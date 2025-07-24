@@ -14,6 +14,12 @@ import 'package:school_app/teacher/screens/classes/classes_binding.dart';
 import 'package:school_app/teacher/screens/classes/classes_screen.dart';
 import 'package:school_app/teacher/screens/home%20screen/teacher_dashboard.dart';
 import 'package:school_app/teacher/screens/home%20screen/teacher_home_binding.dart';
+import 'package:school_app/teacher/screens/messages/chat_screen.dart';
+import 'package:school_app/teacher/screens/messages/messages_binding.dart';
+import 'package:school_app/teacher/screens/messages/messages_screen.dart';
+import 'package:school_app/teacher/screens/messages/new_conversation_screen.dart';
+import 'package:school_app/teacher/screens/settings/setting_binding.dart';
+import 'package:school_app/teacher/screens/settings/settings_screen.dart';
 
 class AppRoutes {
   static appRoutes() => [
@@ -77,6 +83,37 @@ class AppRoutes {
       name: RouteName.assignmentSubmissionsDetailScreen,
       page: () => AssignmentSubmissionDetailScreen(),
       binding: AssignmentBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+
+    GetPage(
+      name: RouteName.teacherMessagesScreen,
+      page: () => TeacherMessagesScreen(),
+      binding: TeacherMessagesBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+
+    GetPage(
+      name: RouteName.teacherChatScreen,
+      page: () => const TeacherChatScreen(),
+      binding: TeacherMessagesBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: RouteName.teachernewConversationScreen,
+      page: () => const NewConversationScreen(),
+      binding: TeacherMessagesBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+
+    GetPage(
+      name: RouteName.teacherSettingScreen,
+      page: () => const TeacherSettingScreen(),
+      binding: SettingBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),

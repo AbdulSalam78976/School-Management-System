@@ -14,4 +14,12 @@ class RouteName {
       '/assignmentSubmissionsScreen';
   static const String assignmentSubmissionsDetailScreen =
       '/assignmentSubmissionsDetailScreen';
+
+  static const String teacherMessagesScreen = '/teacher_messages_Screen';
+
+  static const String teacherChatScreen = '/teacher_chat_Screen';
+  static const String teachernewConversationScreen =
+      '/teacher_newConversation_Screen';
+
+  static const String teacherSettingScreen = '/teacher_setting_Screen';
 }

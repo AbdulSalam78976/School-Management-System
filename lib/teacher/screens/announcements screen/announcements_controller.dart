@@ -24,7 +24,7 @@ class TeacherAnnouncementsController extends GetxController {
     // Use a microtask to safely update shared state after the frame is drawn.
     Future.delayed(Duration.zero, () {
       appBarController.setTitle('Announcements');
-      drawerController.setActiveIndex(5); // Index 5 for Announcements
+      drawerController.setActiveIndex(4); // Index 5 for Announcements
     });
   }
 
