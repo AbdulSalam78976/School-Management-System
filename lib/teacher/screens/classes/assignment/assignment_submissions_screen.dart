@@ -78,7 +78,7 @@ class _AssignmentSubmissionsScreenState
       return !submission.isSubmitted;
     }).toList();
 
-    Widget buildStudentTile(
+    Widget StudentTile(
       Student student, {
       bool submitted = false,
       DateTime? date,
@@ -125,41 +125,44 @@ class _AssignmentSubmissionsScreenState
     return Scaffold(
       appBar: const CustomAppBar(),
       drawer: const CustomDrawer(),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        children: [
-          const Text(
-            'Submitted',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-              color: AppPalette.textColor,
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          children: [
+            const SizedBox(height: 16),
+            const Text(
+              'Submitted',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: AppPalette.textColor,
+              ),
             ),
-          ),
-          const SizedBox(height: 12),
-          ...submittedStudents.map((student) {
-            final submission = submissions.firstWhere(
-              (s) => s.studentId == student.id,
-              orElse: () => AssignmentSubmission(studentId: student.id),
-            );
-            return buildStudentTile(
-              student,
-              submitted: true,
-              date: submission.submissionDate,
-            );
-          }),
-          const SizedBox(height: 32),
-          const Text(
-            'Not Submitted',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-              color: AppPalette.textColor,
+            const SizedBox(height: 12),
+            ...submittedStudents.map((student) {
+              final submission = submissions.firstWhere(
+                (s) => s.studentId == student.id,
+                orElse: () => AssignmentSubmission(studentId: student.id),
+              );
+              return StudentTile(
+                student,
+                submitted: true,
+                date: submission.submissionDate,
+              );
+            }),
+            const SizedBox(height: 32),
+            const Text(
+              'Not Submitted',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: AppPalette.textColor,
+              ),
             ),
-          ),
-          const SizedBox(height: 12),
-          ...notSubmittedStudents.map((student) => buildStudentTile(student)),
-        ],
+            const SizedBox(height: 12),
+            ...notSubmittedStudents.map((student) => StudentTile(student)),
+          ],
+        ),
       ),
     );
   }

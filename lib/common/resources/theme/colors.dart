@@ -5,8 +5,8 @@ class AppPalette {
   static const Color primaryColor = Color(0xFF3E5F44); // Deep Forest Green
   static const Color secondaryColor = Color(0xFF5E936C); // Natural Green
   static const Color accentColor = Color(0xFF93DA97); // Soft Mint
-  static const Color textColor = Color(0xFF4F4F4F);
-  // Dark Text for Contrast
+  static const Color textColor = Color(0xFF2C3E50);
+
   static const Color whiteColor = Colors.white;
   static const Color greyColor = Color(0xFF9E9E9E); // Neutral Grey (optional)
   static const Color borderColor = Color(0xFF3E5F44); // Use primary for borders

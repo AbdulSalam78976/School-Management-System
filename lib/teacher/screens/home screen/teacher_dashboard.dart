@@ -18,6 +18,7 @@ import 'package:school_app/common/components/upcoming%20classes/upcoming_class_t
 import 'package:school_app/common/components/upcoming%20classes/upcoming_classes_controller.dart';
 import 'package:school_app/common/components/upcoming%20classes/upcoming_classes_model.dart';
 import 'package:school_app/common/components/upcoming%20classes/upcoming_classes_widget.dart';
+import 'package:school_app/common/resources/routes/route_names.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
 import 'package:school_app/teacher/data/teacher_drawer_data.dart';
 
@@ -57,12 +58,16 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
         QuickActionCardModel(
           label: "Classes",
           icon: Icons.class_outlined,
-          onTap: () {},
+          onTap: () {
+            Get.toNamed(RouteName.teacherClassesScreen);
+          },
         ),
         QuickActionCardModel(
           label: "Attendance",
           icon: Icons.calendar_today_outlined,
-          onTap: () {},
+          onTap: () {
+            Get.toNamed(RouteName.teacherAttendanceScreen);
+          },
         ),
         QuickActionCardModel(
           label: "Timetable",

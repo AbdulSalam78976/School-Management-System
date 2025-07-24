@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:school_app/teacher/screens/settings/setting_controller.dart';
+import 'package:school_app/common/screens/settings/setting_controller.dart';
 
 class SettingBinding extends Bindings {
   @override

@@ -41,96 +41,101 @@ class _TeacherChatScreenState extends State<TeacherChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppPalette.accentColor,
+        //  backgroundColor: Colors.transparent,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
           'Ms. Johnson',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1,
+          ),
         ),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: messages.length,
-              itemBuilder: (context, index) {
-                final msg = messages[index];
-                final isMe = msg['isMe'] as bool;
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: messages.length,
+                itemBuilder: (context, index) {
+                  final msg = messages[index];
+                  final isMe = msg['isMe'] as bool;
 
-                return Column(
-                  crossAxisAlignment: isMe
-                      ? CrossAxisAlignment.end
-                      : CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 4),
-                      child: Text(
-                        msg['sender'],
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
+                  return Column(
+                    crossAxisAlignment: isMe
+                        ? CrossAxisAlignment.end
+                        : CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Text(
+                          msg['sender'],
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: isMe
-                          ? MainAxisAlignment.end
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        if (!isMe)
-                          const CircleAvatar(
-                            radius: 18,
-                            backgroundImage: AssetImage(
-                              'assets/images/teacher.png',
+                      Row(
+                        mainAxisAlignment: isMe
+                            ? MainAxisAlignment.end
+                            : MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          if (!isMe)
+                            const CircleAvatar(
+                              radius: 18,
+                              backgroundImage: AssetImage(
+                                'assets/images/teacher.png',
+                              ),
                             ),
-                          ),
-                        const SizedBox(width: 8),
-                        Flexible(
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(vertical: 6),
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: isMe
-                                  ? Colors.lightBlueAccent
-                                  : Colors.grey.shade100,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Text(
-                              msg['text'],
-                              style: TextStyle(
-                                color: isMe ? Colors.black : Colors.black87,
-                                fontSize: 15,
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(vertical: 6),
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: isMe
+                                    ? Colors.lightBlueAccent
+                                    : Colors.grey.shade100,
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Text(
+                                msg['text'],
+                                style: TextStyle(
+                                  color: isMe ? Colors.black : Colors.black87,
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        if (isMe)
-                          const CircleAvatar(
-                            radius: 18,
-                            backgroundImage: AssetImage(
-                              'assets/images/davis.png',
+                          const SizedBox(width: 8),
+                          if (isMe)
+                            const CircleAvatar(
+                              radius: 18,
+                              backgroundImage: AssetImage(
+                                'assets/images/davis.png',
+                              ),
                             ),
-                          ),
-                      ],
-                    ),
-                  ],
-                );
-              },
+                        ],
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
 
-          SendMessageWidget(messageController: _messageController),
-        ],
+            SendMessageWidget(messageController: _messageController),
+          ],
+        ),
       ),
     );
   }

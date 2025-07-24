@@ -31,7 +31,7 @@ class ClassCard extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            colors: [AppPalette.secondaryColor, AppPalette.accentColor],
+            colors: [AppPalette.primaryColor, AppPalette.secondaryColor],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -136,21 +136,21 @@ class ClassCard extends StatelessWidget {
                       message: 'Assignments',
                       child: GestureDetector(
                         onTap: onAssignmentTap,
-                        child: const Icon(
+                        child: Icon(
                           Icons.assignment_turned_in,
-                          size: 24,
-                          color: Colors.blueAccent,
+                          size: 28,
+                          color: Colors.cyan[300],
                         ),
                       ),
                     ),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 10),
                     Tooltip(
                       message: 'Grades',
                       child: GestureDetector(
                         onTap: onGradeTap,
                         child: const Icon(
                           Icons.grade,
-                          size: 24,
+                          size: 28,
                           color: Colors.amber,
                         ),
                       ),

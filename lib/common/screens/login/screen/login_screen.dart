@@ -4,7 +4,7 @@ import 'package:school_app/common/components/loadingwidget/loading_widget.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
 import 'package:school_app/common/utils/utils.dart';
 import 'package:get/get.dart';
-import 'package:school_app/common/login/controller/login_controller.dart';
+import 'package:school_app/common/screens/login/controller/login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -38,7 +38,8 @@ class LoginScreen extends StatelessWidget {
                     () => SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       physics: const BouncingScrollPhysics(),
-                      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                      keyboardDismissBehavior:
+                          ScrollViewKeyboardDismissBehavior.onDrag,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:school_app/common/login/screen/login_screen.dart';
+import 'package:school_app/common/screens/login/screen/login_screen.dart';
 import 'package:school_app/common/resources/routes/route_names.dart';
 import 'package:school_app/student/screens/student_dashboard.dart';
 import 'package:school_app/teacher/screens/announcements%20screen/announcements_binding.dart';
@@ -10,16 +10,19 @@ import 'package:school_app/teacher/screens/classes/assignment/assignment_binding
 import 'package:school_app/teacher/screens/classes/assignment/assignment_screen.dart';
 import 'package:school_app/teacher/screens/classes/assignment/assignment_submission_detail_screen.dart';
 import 'package:school_app/teacher/screens/classes/assignment/assignment_submissions_screen.dart';
+import 'package:school_app/teacher/screens/classes/class_detail_screen.dart';
 import 'package:school_app/teacher/screens/classes/classes_binding.dart';
 import 'package:school_app/teacher/screens/classes/classes_screen.dart';
 import 'package:school_app/teacher/screens/home%20screen/teacher_dashboard.dart';
 import 'package:school_app/teacher/screens/home%20screen/teacher_home_binding.dart';
-import 'package:school_app/teacher/screens/messages/chat_screen.dart';
-import 'package:school_app/teacher/screens/messages/messages_binding.dart';
-import 'package:school_app/teacher/screens/messages/messages_screen.dart';
-import 'package:school_app/teacher/screens/messages/new_conversation_screen.dart';
-import 'package:school_app/teacher/screens/settings/setting_binding.dart';
-import 'package:school_app/teacher/screens/settings/settings_screen.dart';
+import 'package:school_app/common/screens/messages/chat_screen.dart';
+import 'package:school_app/common/screens/messages/messages_binding.dart';
+import 'package:school_app/common/screens/messages/messages_screen.dart';
+import 'package:school_app/common/screens/messages/new_conversation_screen.dart';
+import 'package:school_app/common/screens/settings/profile/profile_binding.dart';
+import 'package:school_app/common/screens/settings/profile/profile_screen.dart';
+import 'package:school_app/common/screens/settings/setting_binding.dart';
+import 'package:school_app/common/screens/settings/settings_screen.dart';
 
 class AppRoutes {
   static appRoutes() => [
@@ -114,6 +117,20 @@ class AppRoutes {
       name: RouteName.teacherSettingScreen,
       page: () => const TeacherSettingScreen(),
       binding: SettingBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: RouteName.profileScreen,
+      page: () => const ProfileScreen(),
+      binding: ProfileBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: RouteName.teacherClassDetailScreen,
+      page: () => ClassDetailScreen(),
+      binding: ClassesBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),

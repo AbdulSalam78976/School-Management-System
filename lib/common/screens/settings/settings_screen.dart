@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_app/common/components/appbar/custom_appbar_widget.dart';
 import 'package:school_app/common/components/drawer/custom_drawer.dart';
+import 'package:school_app/common/resources/routes/route_names.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
-import 'package:school_app/teacher/screens/settings/setting_controller.dart';
+import 'package:school_app/common/screens/settings/setting_controller.dart';
 
 class TeacherSettingScreen extends StatefulWidget {
   const TeacherSettingScreen({super.key});
@@ -19,36 +20,38 @@ class _TeacherSettingScreenState extends State<TeacherSettingScreen> {
     return Scaffold(
       appBar: const CustomAppBar(),
       drawer: const CustomDrawer(),
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        children: [
-          CustomTile(
-            icon: Icons.person,
-            title: 'Profile',
-            subtitle: 'View and edit your profile',
-            onTap: () {
-              // Navigate or show dialog
-            },
-          ),
+      body: SafeArea(
+        child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          children: [
+            CustomTile(
+              icon: Icons.person,
+              title: 'Profile',
+              subtitle: 'View and edit your profile',
+              onTap: () {
+                Get.toNamed(RouteName.profileScreen);
+              },
+            ),
 
-          CustomTile(
-            icon: Icons.settings,
-            title: 'Account Settings',
-            subtitle: 'Manage your account settings',
-            onTap: () {
-              // Navigate or show dialog
-            },
-          ),
+            CustomTile(
+              icon: Icons.settings,
+              title: 'Account Settings',
+              subtitle: 'Manage your account settings',
+              onTap: () {
+                // Navigate or show dialog
+              },
+            ),
 
-          CustomTile(
-            icon: Icons.notifications,
-            title: 'Notifications',
-            subtitle: 'Manage notification settings',
-            onTap: () {
-              // Navigate or show dialog
-            },
-          ),
-        ],
+            CustomTile(
+              icon: Icons.notifications,
+              title: 'Notifications',
+              subtitle: 'Manage notification settings',
+              onTap: () {
+                // Navigate or show dialog
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

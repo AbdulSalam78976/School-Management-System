@@ -8,6 +8,7 @@ class RouteName {
       '/teacher_announcement_Screen';
   static const String teacherAttendanceScreen = '/teacher_attendance_Screen';
   static const String teacherClassesScreen = '/teacher_classes_Screen';
+  static const String teacherClassDetailScreen = '/teacher_classDetail_Screen';
   static const String teacherAssignmentScreen = '/teacher_assignment_Screen';
 
   static const String assignmentSubmissionsScreen =
@@ -22,4 +23,5 @@ class RouteName {
       '/teacher_newConversation_Screen';
 
   static const String teacherSettingScreen = '/teacher_setting_Screen';
+  static const String profileScreen = '/teacher_profile_Screen';
 }

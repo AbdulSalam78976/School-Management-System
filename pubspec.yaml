@@ -43,6 +43,7 @@ dependencies:
   intl: 
   table_calendar: ^3.2.0
   file_picker: ^10.2.0
+  image_picker:
 
 
 

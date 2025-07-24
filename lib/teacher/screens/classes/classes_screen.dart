@@ -21,39 +21,43 @@ class _TeacherClassesScreenState extends State<TeacherClassesScreen> {
       appBar: const CustomAppBar(),
       drawer: const CustomDrawer(),
 
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Expanded(
-          child: Obx(
-            () => GridView.builder(
-              itemCount: controller.classes.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 1,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+          child: Expanded(
+            child: Obx(
+              () => GridView.builder(
+                itemCount: controller.classes.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  childAspectRatio: 1,
+                ),
+                itemBuilder: (context, index) {
+                  final classData = controller.classes[index];
+                  return ClassCard(
+                    title: classData.name,
+                    studentCount: classData.students.length,
+                    section: classData.section,
+                    subject: classData.subject,
+                    onTap: () {
+                      Get.toNamed(
+                        RouteName.teacherClassDetailScreen,
+                        arguments: classData,
+                      );
+                    },
+                    onAssignmentTap: () {
+                      // Handle assignment tap
+                      Get.toNamed(
+                        RouteName.teacherAssignmentScreen,
+                        arguments: classData,
+                      );
+                    },
+                    onGradeTap: () {},
+                  );
+                },
               ),
-              itemBuilder: (context, index) {
-                final classData = controller.classes[index];
-                return ClassCard(
-                  title: classData.name,
-                  studentCount: classData.students.length,
-                  section: classData.section,
-                  subject: classData.subject,
-                  onTap: () {},
-                  onAssignmentTap: () {
-                    // Handle assignment tap
-                    Get.toNamed(
-                      RouteName.teacherAssignmentScreen,
-                      arguments: {
-                        'classId': classData.id,
-                        'teacherId': classData.id,
-                      },
-                    );
-                  },
-                  onGradeTap: () {},
-                );
-              },
             ),
           ),
         ),

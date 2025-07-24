@@ -102,102 +102,105 @@ class _AssignmentSubmissionDetailScreenState
       appBar: const CustomAppBar(),
       drawer: const CustomDrawer(),
 
-      body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        children: [
-          const Text(
-            'Submitted Work',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-          ),
-          const SizedBox(height: 16),
-          if (files.isEmpty)
-            Container(
-              height: 120,
-              alignment: Alignment.center,
-              child: const Text('No files submitted.'),
-            )
-          else
-            ...files.map(buildFileTile),
-          const SizedBox(height: 32),
-          const Text(
-            'Marks & Feedback',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-          ),
-          const SizedBox(height: 18),
-          const Text(
-            'Marks',
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
-          ),
-          const SizedBox(height: 8),
-          TextField(
-            controller: controller.obtainedmarksController,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              hintText: 'Enter marks',
-              filled: true,
-
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide.none,
-              ),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
-              ),
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          children: [
+            const SizedBox(height: 16),
+            const Text(
+              'Submitted Work',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
             ),
-          ),
-          const SizedBox(height: 18),
-          const Text(
-            'Feedback',
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
-          ),
-          const SizedBox(height: 8),
-          TextField(
-            controller: controller.feedbackController,
-            minLines: 3,
-            maxLines: 5,
-            decoration: InputDecoration(
-              hintText: 'Provide feedback to the student',
-              filled: true,
-
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide.none,
-              ),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 16,
-              ),
+            const SizedBox(height: 16),
+            if (files.isEmpty)
+              Container(
+                height: 120,
+                alignment: Alignment.center,
+                child: const Text('No files submitted.'),
+              )
+            else
+              ...files.map(buildFileTile),
+            const SizedBox(height: 32),
+            const Text(
+              'Marks & Feedback',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
             ),
-          ),
-          const SizedBox(height: 28),
-          SizedBox(
-            width: double.infinity,
-            height: 48,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
+            const SizedBox(height: 18),
+            const Text(
+              'Marks',
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              controller: controller.obtainedmarksController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                hintText: 'Enter marks',
+                filled: true,
+
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
                 ),
-                textStyle: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 17,
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
                 ),
-                elevation: 0,
               ),
-              onPressed: () {
-                controller.submitMarksAndFeedback(
-                  assignmentId: '',
-                  studentId: '',
-                );
-                Get.snackbar('Submitted', 'Marks & feedback submitted!');
-              },
-
-              child: const Text('Submit Marks & Feedback'),
             ),
-          ),
-          const SizedBox(height: 16),
-        ],
+            const SizedBox(height: 18),
+            const Text(
+              'Feedback',
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              controller: controller.feedbackController,
+              minLines: 3,
+              maxLines: 5,
+              decoration: InputDecoration(
+                hintText: 'Provide feedback to the student',
+                filled: true,
+
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 16,
+                ),
+              ),
+            ),
+            const SizedBox(height: 28),
+            SizedBox(
+              width: double.infinity,
+              height: 48,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  textStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                  elevation: 0,
+                ),
+                onPressed: () {
+                  controller.submitMarksAndFeedback(
+                    assignmentId: '',
+                    studentId: '',
+                  );
+                  Get.snackbar('Submitted', 'Marks & feedback submitted!');
+                },
+
+                child: const Text('Submit Marks & Feedback'),
+              ),
+            ),
+            const SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }

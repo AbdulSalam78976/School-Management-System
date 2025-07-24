@@ -17,117 +17,123 @@ class TeacherAttendanceScreen extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(),
       drawer: const CustomDrawer(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Obx(
-            () => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 8),
-                const Text(
-                  "Select Date",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                const SizedBox(height: 8),
-                TableCalendar(
-                  firstDay: DateTime.utc(2020, 1, 1),
-                  lastDay: DateTime.utc(2030, 12, 31),
-                  focusedDay: controller.focusedDay.value,
-                  selectedDayPredicate: (day) =>
-                      isSameDay(controller.selectedDay.value, day),
-                  onDaySelected: controller.onDaySelected,
-                  calendarFormat: CalendarFormat.month,
-                  headerStyle: HeaderStyle(
-                    formatButtonVisible: false,
-                    titleCentered: true,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Obx(
+              () => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 8),
+                  const Text(
+                    "Select Date",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  const SizedBox(height: 8),
+                  TableCalendar(
+                    firstDay: DateTime.utc(2020, 1, 1),
+                    lastDay: DateTime.utc(2030, 12, 31),
+                    focusedDay: controller.focusedDay.value,
+                    selectedDayPredicate: (day) =>
+                        isSameDay(controller.selectedDay.value, day),
+                    onDaySelected: controller.onDaySelected,
+                    calendarFormat: CalendarFormat.month,
+                    headerStyle: HeaderStyle(
+                      formatButtonVisible: false,
+                      titleCentered: true,
 
-                    titleTextStyle: TextStyle(
-                      color: AppPalette.primaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      titleTextStyle: TextStyle(
+                        color: AppPalette.primaryColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                      leftChevronIcon: Icon(
+                        Icons.chevron_left,
+                        color: AppPalette.primaryColor,
+                      ),
+                      rightChevronIcon: Icon(
+                        Icons.chevron_right,
+                        color: AppPalette.primaryColor,
+                      ),
                     ),
-                    leftChevronIcon: Icon(
-                      Icons.chevron_left,
-                      color: AppPalette.primaryColor,
+                    daysOfWeekStyle: DaysOfWeekStyle(
+                      weekdayStyle: TextStyle(
+                        color: AppPalette.textColor.withOpacity(0.6),
+                        fontWeight: FontWeight.bold,
+                      ),
+                      weekendStyle: TextStyle(
+                        color: AppPalette.errorColor.withOpacity(0.7),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    rightChevronIcon: Icon(
-                      Icons.chevron_right,
-                      color: AppPalette.primaryColor,
+                    calendarStyle: CalendarStyle(
+                      todayDecoration: BoxDecoration(
+                        color: AppPalette.secondaryColor.withOpacity(0.2),
+                        shape: BoxShape.circle,
+                      ),
+                      selectedDecoration: BoxDecoration(
+                        color: AppPalette.primaryColor,
+                        shape: BoxShape.circle,
+                      ),
+                      selectedTextStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      weekendTextStyle: TextStyle(color: AppPalette.errorColor),
+                      defaultTextStyle: TextStyle(
+                        color: AppPalette.primaryColor,
+                      ),
+                      todayTextStyle: TextStyle(
+                        color: AppPalette.primaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                  daysOfWeekStyle: DaysOfWeekStyle(
-                    weekdayStyle: TextStyle(
-                      color: AppPalette.textColor.withOpacity(0.6),
-                      fontWeight: FontWeight.bold,
-                    ),
-                    weekendStyle: TextStyle(
-                      color: AppPalette.errorColor.withOpacity(0.7),
-                      fontWeight: FontWeight.bold,
-                    ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    "Class",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  calendarStyle: CalendarStyle(
-                    todayDecoration: BoxDecoration(
-                      color: AppPalette.secondaryColor.withOpacity(0.2),
-                      shape: BoxShape.circle,
-                    ),
-                    selectedDecoration: BoxDecoration(
-                      color: AppPalette.primaryColor,
-                      shape: BoxShape.circle,
-                    ),
-                    selectedTextStyle: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    weekendTextStyle: TextStyle(color: AppPalette.errorColor),
-                    defaultTextStyle: TextStyle(color: AppPalette.primaryColor),
-                    todayTextStyle: TextStyle(
-                      color: AppPalette.primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  "Class",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                const SizedBox(height: 8),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(controller.classData.length, (
-                      index,
-                    ) {
-                      final isSelected =
-                          controller.selectedClassIndex.value == index;
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: ChoiceChip(
-                          label: Text(controller.classData[index].name),
-                          avatar: Icon(
-                            Icons.class_outlined,
-                            color: isSelected
-                                ? Theme.of(
-                                    context,
-                                  ).chipTheme.secondarySelectedColor
-                                : Theme.of(context).chipTheme.labelStyle?.color,
+                  const SizedBox(height: 8),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(controller.classData.length, (
+                        index,
+                      ) {
+                        final isSelected =
+                            controller.selectedClassIndex.value == index;
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: ChoiceChip(
+                            label: Text(controller.classData[index].name),
+                            avatar: Icon(
+                              Icons.class_outlined,
+                              color: isSelected
+                                  ? Theme.of(
+                                      context,
+                                    ).chipTheme.secondarySelectedColor
+                                  : Theme.of(
+                                      context,
+                                    ).chipTheme.labelStyle?.color,
+                            ),
+                            selected: isSelected,
+                            onSelected: (_) => controller.selectClass(index),
                           ),
-                          selected: isSelected,
-                          onSelected: (_) => controller.selectClass(index),
-                        ),
-                      );
-                    }),
+                        );
+                      }),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Students',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                const SizedBox(height: 8),
-                StudentListView(),
-              ],
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Students',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  const SizedBox(height: 8),
+                  StudentListView(),
+                ],
+              ),
             ),
           ),
         ),

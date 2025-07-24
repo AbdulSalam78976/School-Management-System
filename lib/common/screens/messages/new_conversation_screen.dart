@@ -12,41 +12,47 @@ class NewConversationScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppPalette.accentColor,
+        //backgroundColor: AppPalette.accentColor,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
           'New Conversation',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1,
+          ),
         ),
         centerTitle: true,
       ),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-        children: [
-          /// Students
-          const SectionHeader(title: 'Students'),
-          ..._buildUserList([
-            User(name: 'Ethan Harper', subtitle: 'Grade 10', image: ''),
-            User(name: 'Olivia Bennett', subtitle: 'Grade 11', image: ''),
-            User(name: 'Noah Carter', subtitle: 'Grade 9', image: ''),
-          ]),
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          children: [
+            /// Students
+            const SectionHeader(title: 'Students'),
+            ..._buildUserList([
+              User(name: 'Ethan Harper', subtitle: 'Grade 10', image: ''),
+              User(name: 'Olivia Bennett', subtitle: 'Grade 11', image: ''),
+              User(name: 'Noah Carter', subtitle: 'Grade 9', image: ''),
+            ]),
 
-          const SectionHeader(title: 'Teachers'),
-          ..._buildUserList([
-            User(name: 'Mr. Anderson', image: ''),
-            User(name: 'Ms. Rodriguez', image: '8'),
-            User(name: 'Mr. Thompson', image: ''),
-          ]),
+            const SectionHeader(title: 'Teachers'),
+            ..._buildUserList([
+              User(name: 'Mr. Anderson', image: ''),
+              User(name: 'Ms. Rodriguez', image: '8'),
+              User(name: 'Mr. Thompson', image: ''),
+            ]),
 
-          const SectionHeader(title: 'Staff'),
-          ..._buildUserList([
-            User(name: 'Ms. Clark', image: ''),
-            User(name: 'Mr. Davis', image: ''),
-          ]),
-        ],
+            const SectionHeader(title: 'Staff'),
+            ..._buildUserList([
+              User(name: 'Ms. Clark', image: ''),
+              User(name: 'Mr. Davis', image: ''),
+            ]),
+          ],
+        ),
       ),
     );
   }

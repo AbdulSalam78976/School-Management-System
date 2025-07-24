@@ -15,15 +15,17 @@ class TeacherAnnouncementsScreen extends StatelessWidget {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: const CustomAppBar(),
-      body: Padding(
-        padding: EdgeInsetsGeometry.symmetric(horizontal: 10),
-        child: Obx(
-          () => ListView.builder(
-            itemCount: controller.announcements.length,
-            itemBuilder: (context, index) {
-              final announcement = controller.announcements[index];
-              return AnnouncementsTile(announcement: announcement);
-            },
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsetsGeometry.symmetric(horizontal: 10, vertical: 10),
+          child: Obx(
+            () => ListView.builder(
+              itemCount: controller.announcements.length,
+              itemBuilder: (context, index) {
+                final announcement = controller.announcements[index];
+                return AnnouncementsTile(announcement: announcement);
+              },
+            ),
           ),
         ),
       ),
