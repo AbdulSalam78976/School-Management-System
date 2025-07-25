@@ -99,30 +99,33 @@ class TeacherAttendanceScreen extends StatelessWidget {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: List.generate(controller.classData.length, (
-                        index,
-                      ) {
-                        final isSelected =
-                            controller.selectedClassIndex.value == index;
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: ChoiceChip(
-                            label: Text(controller.classData[index].name),
-                            avatar: Icon(
-                              Icons.class_outlined,
-                              color: isSelected
-                                  ? Theme.of(
-                                      context,
-                                    ).chipTheme.secondarySelectedColor
-                                  : Theme.of(
-                                      context,
-                                    ).chipTheme.labelStyle?.color,
+                      children: List.generate(
+                        controller.filteredclasses.length,
+                        (index) {
+                          final isSelected =
+                              controller.selectedClassIndex.value == index;
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: ChoiceChip(
+                              label: Text(
+                                controller.filteredclasses[index].name,
+                              ),
+                              avatar: Icon(
+                                Icons.class_outlined,
+                                color: isSelected
+                                    ? Theme.of(
+                                        context,
+                                      ).chipTheme.secondarySelectedColor
+                                    : Theme.of(
+                                        context,
+                                      ).chipTheme.labelStyle?.color,
+                              ),
+                              selected: isSelected,
+                              onSelected: (_) => controller.selectClass(index),
                             ),
-                            selected: isSelected,
-                            onSelected: (_) => controller.selectClass(index),
-                          ),
-                        );
-                      }),
+                          );
+                        },
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),

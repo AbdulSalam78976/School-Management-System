@@ -37,7 +37,7 @@ class TeacherDrawerData {
       title: 'Messages',
       isActive: false,
       onTap: () {
-        Get.toNamed(RouteName.teacherMessagesScreen);
+        Get.toNamed(RouteName.messagesScreen);
       },
     ),
     DrawerModel(
@@ -45,7 +45,7 @@ class TeacherDrawerData {
       title: 'Announcements',
       isActive: false,
       onTap: () {
-        Get.toNamed(RouteName.teacherannouncementScreen);
+        Get.toNamed(RouteName.announcementScreen);
       },
     ),
     DrawerModel(
@@ -53,7 +53,7 @@ class TeacherDrawerData {
       title: 'Settings',
       isActive: false,
       onTap: () {
-        Get.toNamed(RouteName.teacherSettingScreen);
+        Get.toNamed(RouteName.settingScreen);
       },
     ),
   ];

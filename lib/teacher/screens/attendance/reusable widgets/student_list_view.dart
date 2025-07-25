@@ -10,11 +10,12 @@ class StudentListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      if (controller.classData.isEmpty) {
+      if (controller.filteredclasses.isEmpty) {
         return const Center(child: CircularProgressIndicator());
       }
-      final displayedStudents =
-          controller.classData[controller.selectedClassIndex.value].students;
+      final displayedStudents = controller
+          .filteredclasses[controller.selectedClassIndex.value]
+          .students;
 
       return ListView.separated(
         shrinkWrap: true,

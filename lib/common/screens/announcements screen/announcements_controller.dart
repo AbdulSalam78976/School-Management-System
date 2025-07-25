@@ -3,7 +3,7 @@ import 'package:school_app/common/components/appbar/appbar_controller.dart';
 import 'package:school_app/common/components/drawer/drawer_controller.dart';
 import 'package:school_app/common/components/announcements/announcements_model.dart';
 
-class TeacherAnnouncementsController extends GetxController {
+class AnnouncementsController extends GetxController {
   // Dependencies
   final AppBarController appBarController = Get.find<AppBarController>();
   final DrawerControllerCustom drawerController =

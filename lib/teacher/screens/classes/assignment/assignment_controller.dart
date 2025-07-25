@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:school_app/common/components/appbar/appbar_controller.dart';
 import 'package:school_app/common/components/drawer/drawer_controller.dart';
 import 'package:school_app/common/models/assignment.dart';
+import 'package:school_app/common/models/teacher.dart';
 
 class TeacherAssignmentController extends GetxController {
   final AppBarController appBarController = Get.find<AppBarController>();
@@ -12,20 +13,21 @@ class TeacherAssignmentController extends GetxController {
 
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
-
   final attachments = <PlatformFile>[].obs;
-
-  // Add a controller for total marks
-  TextEditingController totalMarksController = TextEditingController();
-
   final isAssigned = false.obs;
+
   final Rxn<DateTime> dueDate = Rxn<DateTime>();
   final Rxn<TimeOfDay> dueTime = Rxn<TimeOfDay>();
 
   final obtainedmarksController = TextEditingController();
   final feedbackController = TextEditingController();
+  final totalMarksController = TextEditingController();
 
   final RxList<Assignment> assignments = <Assignment>[].obs;
+  final RxList<Assignment> filteredassignments = <Assignment>[].obs;
+
+  // ✅ Logged-in teacher
+  late final Teacher loggedInTeacher;
 
   @override
   void onReady() {
@@ -41,21 +43,95 @@ class TeacherAssignmentController extends GetxController {
     appBarController.setTitle('Dashboard');
     drawerController.setActiveIndex(0);
     totalMarksController.dispose();
+    obtainedmarksController.dispose();
+    feedbackController.dispose();
+    titleController.dispose();
+    descriptionController.dispose();
     super.onClose();
   }
 
   @override
   void onInit() {
     super.onInit();
+
+    // ✅ Hardcode the teacher for now
+    loggedInTeacher = Teacher(
+      id: '1',
+      name: 'Mr. Ahmad',
+      email: 'ahmad@example.com',
+      avatarUrl: '',
+      major: 'Mathematics',
+    );
+
     _loadAssignmentData();
+  }
+
+  // ✅ Load assignments only for logged-in teacher
+  void _loadAssignmentData() {
+    final allAssignments = <Assignment>[
+      Assignment(
+        id: '1',
+        title: 'Assignment 1',
+        description: 'Draw Use case diagram for a school management system',
+        dueDate: DateTime.now().add(Duration(days: 3)),
+        dueTime: DateTime.now().add(Duration(hours: 3)),
+        assignedDate: DateTime.now().subtract(Duration(days: 1)),
+        assignedTime: DateTime.now(),
+        isSubmitted: false,
+        classId: '1',
+
+        teacherId: '1',
+        totalMarks: 100,
+        attachments: [],
+        submissions: [
+          AssignmentSubmission(
+            studentId: 's1',
+            isSubmitted: true,
+            submissionDate: DateTime.now().subtract(Duration(days: 1)),
+            marksObtained: 90,
+            files: [],
+          ),
+        ],
+        subjectId: '',
+      ),
+      Assignment(
+        id: '2',
+        title: 'Assignment 2',
+        description: 'Do Chapter 4 Questions',
+        dueDate: DateTime.now().add(Duration(days: 2)),
+        dueTime: DateTime.now().add(Duration(hours: 6)),
+        assignedDate: DateTime.now(),
+        assignedTime: DateTime.now(),
+        isSubmitted: false,
+        classId: '2',
+        teacherId: '2',
+        totalMarks: 100,
+        attachments: [],
+        submissions: [],
+        subjectId: '',
+      ),
+    ];
+
+    filteredassignments.assignAll(allAssignments);
+  }
+
+  void filterAssignmentsByClass(String classId) {
+    filteredassignments.assignAll(
+      assignments
+          .where(
+            (a) => a.classId == classId && a.teacherId == loggedInTeacher.id,
+          )
+          .toList(),
+    );
+  }
+
+  void addAssignment(Assignment assignment) {
+    assignments.add(assignment);
+    filteredassignments.add(assignment);
   }
 
   void setAssignments(List<Assignment> newAssignments) {
     assignments.assignAll(newAssignments);
-  }
-
-  void addAssignment(Assignment newAssignment) {
-    assignments.add(newAssignment);
   }
 
   void updateAssignment(Assignment updatedAssignment) {
@@ -69,11 +145,6 @@ class TeacherAssignmentController extends GetxController {
     assignments.removeWhere((a) => a.id == assignmentId);
   }
 
-  getAssignmentsbyClassId(String classId) {
-    return assignments.where((a) => a.classId == classId).toList();
-  }
-
-  // Get all submissions for a given assignment
   List<AssignmentSubmission> getSubmissionsForAssignment(String assignmentId) {
     final assignment = assignments.firstWhereOrNull(
       (a) => a.id == assignmentId,
@@ -81,7 +152,6 @@ class TeacherAssignmentController extends GetxController {
     return assignment?.submissions ?? [];
   }
 
-  // Update a student's submission (e.g., marks, status, file)
   void updateSubmission(
     String assignmentId,
     AssignmentSubmission updatedSubmission,
@@ -110,19 +180,18 @@ class TeacherAssignmentController extends GetxController {
         assignedTime: assignment.assignedTime,
         isSubmitted: assignment.isSubmitted,
         classId: assignment.classId,
-        subject: assignment.subject,
+
         teacherId: assignment.teacherId,
         totalMarks: assignment.totalMarks,
         attachments: assignment.attachments,
         submissions: submissions,
 
         submissionDate: assignment.submissionDate,
+        subjectId: '',
       );
     }
   }
 
-  // Placeholder: Get the file or work submitted by a student for an assignment
-  // In a real app, this would fetch the file from storage or backend
   String? getStudentSubmissionFile(String assignmentId, String studentId) {
     final assignment = assignments.firstWhereOrNull(
       (a) => a.id == assignmentId,
@@ -136,7 +205,6 @@ class TeacherAssignmentController extends GetxController {
         : null;
   }
 
-  // Get students who have submitted the assignment
   List<String> getSubmittedStudentIds(String assignmentId) {
     final assignment = assignments.firstWhereOrNull(
       (a) => a.id == assignmentId,
@@ -155,98 +223,6 @@ class TeacherAssignmentController extends GetxController {
   ) {
     final submittedIds = getSubmittedStudentIds(assignmentId).toSet();
     return allStudentIds.where((id) => !submittedIds.contains(id)).toList();
-  }
-
-  void _loadAssignmentData() {
-    assignments.assignAll([
-      Assignment(
-        id: '1',
-        title: 'Assignment 1',
-        description: 'Draw Use case diagram for a school management system',
-        dueDate: DateTime.now(),
-        dueTime: DateTime.now().add(Duration(days: 3)),
-        assignedDate: DateTime.now().subtract(
-          Duration(days: 1),
-        ), // or any assigned date
-        assignedTime: DateTime.now(),
-        isSubmitted: false,
-        classId: '1', // replace with actual class ID
-        subject: 'Mathematics', // replace with actual subject
-        teacherId: '1', // replace with actual teacher ID
-        totalMarks: 100,
-        submissions: [
-          AssignmentSubmission(
-            studentId: 's1',
-            isSubmitted: true,
-            submissionDate: DateTime.now().subtract(const Duration(days: 1)),
-            marksObtained: 90,
-            files: [
-              PlatformFile(
-                name: 'biology.png',
-                path: 'assets/images/biology.png',
-                size: 12345,
-              ),
-              PlatformFile(
-                name: 'report.pdf',
-                path: 'assets/files/report.pdf',
-                size: 23456,
-              ),
-            ],
-          ),
-          AssignmentSubmission(
-            studentId: 's2',
-            isSubmitted: false,
-            marksObtained: null,
-            files: [],
-          ),
-          AssignmentSubmission(
-            studentId: 's3',
-            isSubmitted: true,
-            submissionDate: DateTime.now().subtract(const Duration(hours: 5)),
-            marksObtained: 75,
-            files: [PlatformFile(name: 'maths.png', path: '', size: 12345)],
-          ),
-        ],
-      ),
-      Assignment(
-        id: '2',
-        title: 'Assignment 2',
-        description: 'Complete assignment 2',
-        dueDate: DateTime.now().add(Duration(days: 3)),
-        assignedDate: DateTime.now(),
-        assignedTime: DateTime.now(),
-        isSubmitted: false,
-        dueTime: DateTime.now().add(Duration(days: 3)),
-        classId: '2',
-        subject: 'Science',
-        teacherId: '2',
-        totalMarks: 100,
-        submissions: [
-          AssignmentSubmission(
-            studentId: 's1',
-            isSubmitted: false,
-            marksObtained: null,
-            files: [],
-          ),
-          AssignmentSubmission(
-            studentId: 's2',
-            isSubmitted: true,
-            submissionDate: DateTime.now().subtract(const Duration(days: 2)),
-            marksObtained: 88,
-            files: [
-              PlatformFile(name: 'chemistry.png', path: '', size: 12345),
-              PlatformFile(name: 'assignment2.pdf', path: '', size: 34567),
-            ],
-          ),
-          AssignmentSubmission(
-            studentId: 's3',
-            isSubmitted: false,
-            marksObtained: null,
-            files: [],
-          ),
-        ],
-      ),
-    ]);
   }
 
   void submitMarksAndFeedback({
@@ -281,7 +257,7 @@ class TeacherAssignmentController extends GetxController {
         title: assignment.title,
         description: assignment.description,
         classId: assignment.classId,
-        subject: assignment.subject,
+
         totalMarks: assignment.totalMarks,
         assignedDate: assignment.assignedDate,
         assignedTime: assignment.assignedTime,
@@ -292,9 +268,10 @@ class TeacherAssignmentController extends GetxController {
         isSubmitted: assignment.isSubmitted,
         submissionDate: assignment.submissionDate,
         submissions: updatedSubmissions,
+        subjectId: '',
       );
 
-      // For GetX reactive updates
+      updateAssignment(assignments[assignmentIndex]);
     }
   }
 }

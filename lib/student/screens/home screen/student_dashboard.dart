@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_app/common/components/appbar/custom_appbar_widget.dart';
@@ -10,18 +8,26 @@ import 'package:school_app/common/components/drawer/drawer_controller.dart';
 
 import 'package:school_app/student/data/student_drawer_data.dart';
 
-class StudentHomeScreen extends StatelessWidget {
+class StudentHomeScreen extends StatefulWidget {
   const StudentHomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Set up controllers
-    final drawerController = Get.put(DrawerControllerCustom());
-    final appBarController = Get.put(AppBarController());
+  State<StudentHomeScreen> createState() => _StudentHomeScreenState();
+}
 
+class _StudentHomeScreenState extends State<StudentHomeScreen> {
+  // Find the permanent controllers
+  final drawerController = Get.find<DrawerControllerCustom>();
+  final appBarController = Get.find<AppBarController>();
+
+  @override
+  Widget build(BuildContext context) {
     // Initialize controller state (mock data for demo)
-    drawerController.setUserName('Student Name');
+
+    drawerController.setUserName('Sehal Bilal');
     drawerController.setItems(StudentDrawerData.getStudentDrawerItems());
+    drawerController.setActiveIndex(0); // Set "Dashboard" as active
+
     appBarController.setTitle('Dashboard');
 
     return Scaffold(

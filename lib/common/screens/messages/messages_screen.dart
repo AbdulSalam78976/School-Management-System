@@ -100,7 +100,7 @@ class _TeacherMessagesScreenState extends State<TeacherMessagesScreen> {
                       onTap: () {
                         // Navigate to conversation screen
                         Get.toNamed(
-                          RouteName.teacherChatScreen,
+                          RouteName.chatScreen,
                           arguments: {
                             'sender': 'You',
                             'receiver': msg['name']!,

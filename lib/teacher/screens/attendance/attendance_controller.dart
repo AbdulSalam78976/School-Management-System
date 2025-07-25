@@ -16,14 +16,19 @@ class AttendanceController extends GetxController {
   final Rx<DateTime?> selectedDay = Rx<DateTime?>(null);
   final RxInt selectedClassIndex = 0.obs;
 
-  final RxList<Class> classData = <Class>[].obs;
+  final RxList<SchoolClass> classes = <SchoolClass>[].obs;
+  final RxList<SchoolClass> filteredclasses = <SchoolClass>[].obs;
   final RxMap<String, String> attendanceStatus = <String, String>{}.obs;
+
+  late final loggedInTeacher;
 
   @override
   void onInit() {
     super.onInit();
     selectedDay.value = focusedDay.value;
-    _loadClassData();
+    //loggedInTeacher = getLoggedInTeacher();
+    filterClassesByTeacher();
+    //_loadClassData();
   }
 
   @override
@@ -71,142 +76,27 @@ class AttendanceController extends GetxController {
   }
 
   void submitAttendance() {
-    print('Submitting Attendance: $attendanceStatus');
+    final selectedClass = classes[selectedClassIndex.value];
+    print('Submitting Attendance for ${selectedClass.name}');
+    print(attendanceStatus);
     Get.snackbar(
       'Success',
-      'Attendance has been updated successfully!',
+      'Attendance for ${selectedClass.name} submitted successfully!',
       snackPosition: SnackPosition.BOTTOM,
     );
   }
 
-  void _loadClassData() {
-    // This would typically be an API call.
-    // For now, we'll use the same mock data.
-    classData.assignAll([
-      Class(
-        id: 'C01',
-        name: 'All Classes',
-        section: 'A',
-        subject: 'Various',
-        teacher: Teacher(
-          id: 'T01',
-          name: 'Ms. Harper',
-          avatarUrl: '',
-          major: '',
-          subjects: [],
-        ),
-        students: [
-          Student(
-            id: '1',
-            name: 'Ethan Harper',
-            avatarUrl: 'assets/ethan.png',
-            enrollmentId: 'S001',
-            grade: '10',
-          ),
-          Student(
-            id: '2',
-            name: 'Olivia Bennett',
-            avatarUrl: 'assets/olivia.png',
-            enrollmentId: 'S002',
-            grade: '10',
-          ),
-          Student(
-            id: '3',
-            name: 'Noah Carter',
-            avatarUrl: 'assets/noah.png',
-            enrollmentId: 'S003',
-            grade: '10',
-          ),
-          Student(
-            id: '4',
-            name: 'Ava Mitchell',
-            avatarUrl: 'assets/ava.png',
-            enrollmentId: 'S004',
-            grade: '10',
-          ),
-          Student(
-            id: '5',
-            name: 'Liam Foster',
-            avatarUrl: 'assets/liam.png',
-            enrollmentId: 'S005',
-            grade: '10',
-          ),
-          Student(
-            id: '6',
-            name: 'Isabella Hayes',
-            avatarUrl: 'assets/isabella.png',
-            enrollmentId: 'S006',
-            grade: '10',
-          ),
-        ],
-      ),
-      Class(
-        id: 'C02',
-        name: 'Math 101',
-        section: 'A',
-        subject: 'Mathematics',
-        teacher: Teacher(
-          id: 'T01',
-          name: 'Ms. Harper',
-          avatarUrl: '',
-          major: 'Math',
-          subjects: ['Math'],
-        ),
-        students: [
-          Student(
-            id: '1',
-            name: 'Ethan Harper',
-            avatarUrl: 'assets/ethan.png',
-            enrollmentId: 'S001',
-            grade: '10',
-          ),
-          Student(
-            id: '3',
-            name: 'Noah Carter',
-            avatarUrl: 'assets/noah.png',
-            enrollmentId: 'S003',
-            grade: '10',
-          ),
-        ],
-      ),
-      Class(
-        id: 'C03',
-        name: 'Science 202',
-        section: 'B',
-        subject: 'Science',
-        teacher: Teacher(
-          id: 'T02',
-          name: 'Mr. Davison',
-          avatarUrl: '',
-          major: 'Science',
-          subjects: ['Science'],
-        ),
-        students: [
-          Student(
-            id: '2',
-            name: 'Olivia Bennett',
-            avatarUrl: 'assets/olivia.png',
-            enrollmentId: 'S002',
-            grade: '10',
-          ),
-          Student(
-            id: '4',
-            name: 'Ava Mitchell',
-            avatarUrl: 'assets/ava.png',
-            enrollmentId: 'S004',
-            grade: '10',
-          ),
-        ],
-      ),
-    ]);
-
-    attendanceStatus.value = {
-      '1': 'Present',
-      '2': 'Absent',
-      '3': 'Present',
-      '4': 'Leave',
-      '5': 'Present',
-      '6': 'Absent',
-    };
+  void filterClassesByTeacher() {
+    filteredclasses.assignAll(
+      classes
+          .where(
+            (c) =>
+                c.subjects.any(
+                  (subject) => subject.teacher.id == loggedInTeacher.id,
+                ) ||
+                c.classTeacher.id == loggedInTeacher.id,
+          )
+          .toList(),
+    );
   }
 }

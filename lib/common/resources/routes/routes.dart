@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
 import 'package:school_app/common/screens/login/screen/login_screen.dart';
 import 'package:school_app/common/resources/routes/route_names.dart';
-import 'package:school_app/student/screens/student_dashboard.dart';
-import 'package:school_app/teacher/screens/announcements%20screen/announcements_binding.dart';
-import 'package:school_app/teacher/screens/announcements%20screen/announcements_screen.dart';
+import 'package:school_app/student/screens/class/class_binding.dart';
+import 'package:school_app/student/screens/class/class_screen.dart';
+import 'package:school_app/student/screens/home%20screen/student_dashboard.dart';
+import 'package:school_app/student/screens/home%20screen/student_home_binding.dart';
+import 'package:school_app/common/screens/announcements%20screen/announcements_binding.dart';
+import 'package:school_app/common/screens/announcements%20screen/announcements_screen.dart';
 import 'package:school_app/teacher/screens/attendance/attendance_binding.dart';
 import 'package:school_app/teacher/screens/attendance/attendance_screen.dart';
 import 'package:school_app/teacher/screens/classes/assignment/assignment_binding.dart';
@@ -42,13 +45,14 @@ class AppRoutes {
     GetPage(
       name: RouteName.studentHomeScreen,
       page: () => const StudentHomeScreen(),
+      binding: StudentHomeBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),
     GetPage(
-      name: RouteName.teacherannouncementScreen,
-      page: () => const TeacherAnnouncementsScreen(),
-      binding: TeacherAnnouncementsBinding(),
+      name: RouteName.announcementScreen,
+      page: () => const AnnouncementsScreen(),
+      binding: AnnouncementsBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),
@@ -91,7 +95,7 @@ class AppRoutes {
     ),
 
     GetPage(
-      name: RouteName.teacherMessagesScreen,
+      name: RouteName.messagesScreen,
       page: () => TeacherMessagesScreen(),
       binding: TeacherMessagesBinding(),
       transitionDuration: Duration(milliseconds: 250),
@@ -99,14 +103,14 @@ class AppRoutes {
     ),
 
     GetPage(
-      name: RouteName.teacherChatScreen,
+      name: RouteName.chatScreen,
       page: () => const TeacherChatScreen(),
       binding: TeacherMessagesBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),
     GetPage(
-      name: RouteName.teachernewConversationScreen,
+      name: RouteName.newConversationScreen,
       page: () => const NewConversationScreen(),
       binding: TeacherMessagesBinding(),
       transitionDuration: Duration(milliseconds: 250),
@@ -114,7 +118,7 @@ class AppRoutes {
     ),
 
     GetPage(
-      name: RouteName.teacherSettingScreen,
+      name: RouteName.settingScreen,
       page: () => const TeacherSettingScreen(),
       binding: SettingBinding(),
       transitionDuration: Duration(milliseconds: 250),
@@ -131,6 +135,13 @@ class AppRoutes {
       name: RouteName.teacherClassDetailScreen,
       page: () => ClassDetailScreen(),
       binding: ClassesBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: RouteName.classScreen,
+      page: () => ClassScreen(),
+      binding: ClassBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),

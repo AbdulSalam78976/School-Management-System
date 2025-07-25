@@ -18,7 +18,7 @@ class TeacherAssignmentScreen extends StatefulWidget {
 }
 
 class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
-  late final Class classdata;
+  late final SchoolClass classdata;
 
   @override
   void initState() {
@@ -34,16 +34,14 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<TeacherAssignmentController>();
+    //controller.filterAssignmentsByClass(classdata.id);
 
     return Scaffold(
       appBar: const CustomAppBar(),
       drawer: const CustomDrawer(),
       body: SafeArea(
         child: Obx(() {
-          final classAssignments = controller.getAssignmentsbyClassId(
-            classdata.id,
-          );
-
+          final classAssignments = controller.filteredassignments;
           if (classAssignments.isEmpty) {
             return const Center(
               child: Text(
@@ -68,7 +66,7 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppPalette.primaryColor,
         onPressed: () {
-          AssignmentCreate(context, classdata.id, classdata.teacher.id);
+          AssignmentCreate(context, classdata);
         },
         child: const Icon(Icons.add),
       ),

@@ -34,7 +34,7 @@ class AssignmentTile extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           gradient: const LinearGradient(
-            colors: [AppPalette.secondaryColor, AppPalette.accentColor],
+            colors: [AppPalette.primaryColor, AppPalette.secondaryColor],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),

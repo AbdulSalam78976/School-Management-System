@@ -77,7 +77,7 @@ class NewConversationScreen extends StatelessWidget {
                   )
                 : null,
             onTap: () {
-              Get.toNamed(RouteName.teacherChatScreen);
+              Get.toNamed(RouteName.chatScreen);
             },
           ),
         )

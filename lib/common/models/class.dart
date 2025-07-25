@@ -1,20 +1,21 @@
-import 'teacher.dart';
 import 'student.dart';
+import 'subject.dart';
+import 'teacher.dart';
 
-class Class {
+class SchoolClass {
   final String id;
   final String name;
   final String section;
-  final String subject;
-  final Teacher teacher;
+  final List<Subject> subjects;
   final List<Student> students;
+  final Teacher classTeacher; // 🆕 Added class teacher
 
-  Class({
+  SchoolClass({
     required this.id,
     required this.name,
     required this.section,
-    required this.subject,
-    required this.teacher,
+    required this.subjects,
     required this.students,
+    required this.classTeacher,
   });
 }

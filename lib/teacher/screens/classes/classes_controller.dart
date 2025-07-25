@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:school_app/common/components/appbar/appbar_controller.dart';
 import 'package:school_app/common/components/drawer/drawer_controller.dart';
 import 'package:school_app/common/models/class.dart';
-import 'package:school_app/common/models/student.dart';
+import 'package:school_app/common/models/subject.dart';
 import 'package:school_app/common/models/teacher.dart';
 
 class TeacherClassesController extends GetxController {
@@ -10,7 +10,10 @@ class TeacherClassesController extends GetxController {
   final DrawerControllerCustom drawerController =
       Get.find<DrawerControllerCustom>();
 
-  final RxList<Class> classes = <Class>[].obs;
+  final RxList<SchoolClass> classes = <SchoolClass>[].obs;
+  final RxList<SchoolClass> filteredclasses = <SchoolClass>[].obs;
+
+  late final Teacher loggedInTeacher;
 
   @override
   void onReady() {
@@ -33,54 +36,56 @@ class TeacherClassesController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _loadClassData();
+
+    // loggedInTeacher = getLoggedInTeacher();
+    //fetchTeacherClasses()
+
+    // Hardcoded teacher for testing
+    loggedInTeacher = Teacher(
+      id: 't1',
+      name: 'Mr. John',
+      avatarUrl: '',
+      email: '',
+      major: '',
+    );
+
+    // Hardcoded class with one subject and the teacher
+    final testClass = SchoolClass(
+      id: 'c1',
+      name: 'Grade 8 ',
+      classTeacher: loggedInTeacher,
+      subjects: [Subject(id: 's1', name: 'Math', teacher: loggedInTeacher)],
+      section: 'A',
+      students: [],
+    );
+
+    filteredclasses.assignAll([testClass]); // Assign just this hardcoded class
+
+    // Later, you can replace this with: fetchTeacherClasses();
   }
 
-  void setClasses(List<Class> newClasses) {
-    classes.assignAll(newClasses);
+  List<SchoolClass> getClassesForTeacher() {
+    return classes.where((schoolClass) {
+      final isSubjectTeacher = schoolClass.subjects.any(
+        (subject) => subject.teacher.id == loggedInTeacher.id,
+      );
+      final isClassTeacher = schoolClass.classTeacher.id == loggedInTeacher.id;
+      return isSubjectTeacher || isClassTeacher;
+    }).toList();
   }
 
-  void addClass(Class newClass) {
-    classes.add(newClass);
-  }
+  // void fetchTeacherClasses() {
+  //   // Assuming `allClasses` is your full list of classes
+  //   final allClasses = getAllSchoolClasses(); // Replace with actual source
 
-  void _loadClassData() {
-    // This would typically be an API call.
-    // For now, we'll use mock data.
+  //   final filteredClasses = allClasses.where((schoolClass) {
+  //     final isSubjectTeacher = schoolClass.subjects.any(
+  //       (subject) => subject.teacher.id == loggedInTeacher.id,
+  //     );
+  //     final isClassTeacher = schoolClass.classTeacher?.id == loggedInTeacher.id;
+  //     return isSubjectTeacher || isClassTeacher;
+  //   }).toList();
 
-    classes.assignAll([
-      Class(
-        id: '1',
-        name: 'Class XI',
-        section: 'A',
-        teacher: Teacher(
-          id: '1',
-          name: '',
-          avatarUrl: '',
-          major: "Bio",
-          subjects: [],
-        ),
-        students: [
-          Student(
-            id: '1',
-            name: 'Student 1',
-            avatarUrl: '',
-            enrollmentId: '',
-            grade: '',
-          ),
-          Student(
-            id: '2',
-            name: 'Student 2',
-            avatarUrl: '',
-            enrollmentId: '',
-            grade: '',
-          ),
-          // Add more students...
-        ],
-        subject: 'Physics',
-      ),
-
-      // Add more classes...
-    ]);
-  }
+  //   classes.assignAll(filteredClasses);
+  // }
 }

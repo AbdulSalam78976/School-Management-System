@@ -14,7 +14,7 @@ class ClassDetailScreen extends StatefulWidget {
 }
 
 class _ClassDetailScreenState extends State<ClassDetailScreen> {
-  late final Class classData;
+  late final SchoolClass classData;
 
   @override
   void initState() {

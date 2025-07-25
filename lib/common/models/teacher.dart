@@ -1,15 +1,13 @@
 import 'user.dart';
 
 class Teacher extends User {
-  final List<String> subjects;
-  final String major; // 🆕 Added field
+  final String major;
 
   Teacher({
     required super.id,
     required super.name,
     required super.avatarUrl,
-
-    required this.subjects,
-    required this.major, // 🆕 Constructor param
-  });
+    required super.email,
+    required this.major,
+  }) : super(role: UserRole.teacher);
 }

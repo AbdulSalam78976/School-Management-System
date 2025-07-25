@@ -1,7 +1,7 @@
 class RouteName {
   static const String loginScreen = '/';
 
-  //static const String loginScreen = '/login_Screen';
+  // teacher screens
   static const String teacherHomeScreen = '/teacher_home_Screen';
   static const String studentHomeScreen = '/student_home_Screen';
   static const String teacherannouncementScreen =
@@ -15,13 +15,16 @@ class RouteName {
       '/assignmentSubmissionsScreen';
   static const String assignmentSubmissionsDetailScreen =
       '/assignmentSubmissionsDetailScreen';
+  //student screens
+  static const String classScreen = '/class_Screen';
+  //common
 
-  static const String teacherMessagesScreen = '/teacher_messages_Screen';
+  static const String announcementScreen = '/announcement_Screen';
+  static const String messagesScreen = '/messages_Screen';
 
-  static const String teacherChatScreen = '/teacher_chat_Screen';
-  static const String teachernewConversationScreen =
-      '/teacher_newConversation_Screen';
+  static const String chatScreen = '/chat_Screen';
+  static const String newConversationScreen = '/newConversation_Screen';
 
-  static const String teacherSettingScreen = '/teacher_setting_Screen';
-  static const String profileScreen = '/teacher_profile_Screen';
+  static const String settingScreen = '/setting_Screen';
+  static const String profileScreen = '/profile_Screen';
 }

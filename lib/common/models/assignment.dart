@@ -6,7 +6,7 @@ class AssignmentSubmission {
   DateTime? submissionDate;
   int? marksObtained;
   List<PlatformFile> files;
-  final String? feedback;
+  String? feedback;
 
   AssignmentSubmission({
     required this.studentId,
@@ -22,16 +22,16 @@ class Assignment {
   final String id;
   final String title;
   final String description;
-  final String classId; // To link with Class
-  final String subject;
+  final String classId; // To link with SchoolClass
+  final String subjectId; // Link to Subject (should ideally be ID)
   final int totalMarks;
   final DateTime assignedDate;
-  final DateTime? assignedTime;
+  final DateTime assignedTime;
   final DateTime? dueDate;
   final DateTime? dueTime;
-  final String teacherId; // Creator/Owner of assignment
-  final List<PlatformFile>? attachments; // File URLs or paths
-  final bool isSubmitted; // If current user submitted
+  final String teacherId; // Creator of assignment
+  final List<PlatformFile>? attachments;
+  final bool isSubmitted; // Whether current student submitted
   final DateTime? submissionDate;
   final List<AssignmentSubmission> submissions;
 
@@ -40,17 +40,16 @@ class Assignment {
     required this.title,
     required this.description,
     required this.classId,
-    required this.subject,
-    required this.assignedDate,
-    required this.dueDate,
-    required this.dueTime,
-    required this.teacherId,
+    required this.subjectId,
     required this.totalMarks,
+    required this.assignedDate,
+    required this.assignedTime,
+    this.dueDate,
+    this.dueTime,
+    required this.teacherId,
     this.attachments,
     this.isSubmitted = false,
     this.submissionDate,
-
-    required this.assignedTime,
     this.submissions = const [],
   });
 }

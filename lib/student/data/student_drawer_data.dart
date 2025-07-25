@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:school_app/common/components/drawer/drawer_model.dart';
+import 'package:school_app/common/resources/routes/route_names.dart';
 
 class StudentDrawerData {
   static List<DrawerModel> getStudentDrawerItems() => [
@@ -14,26 +15,19 @@ class StudentDrawerData {
     ),
     DrawerModel(
       icon: Icons.class_outlined,
-      title: 'My Classes',
+      title: 'Class',
       isActive: false,
       onTap: () {
-        Get.toNamed('/student/classes');
+        Get.toNamed(RouteName.classScreen);
       },
     ),
-    DrawerModel(
-      icon: Icons.calendar_today_outlined,
-      title: 'Attendance',
-      isActive: false,
-      onTap: () {
-        Get.toNamed('/student/attendance');
-      },
-    ),
+
     DrawerModel(
       icon: Icons.message_outlined,
       title: 'Messages',
       isActive: false,
       onTap: () {
-        Get.toNamed('/student/messages');
+        Get.toNamed(RouteName.messagesScreen);
       },
     ),
     DrawerModel(
@@ -41,7 +35,7 @@ class StudentDrawerData {
       title: 'Announcements',
       isActive: false,
       onTap: () {
-        Get.toNamed('/student/announcements');
+        Get.toNamed(RouteName.announcementScreen);
       },
     ),
     DrawerModel(
@@ -49,7 +43,7 @@ class StudentDrawerData {
       title: 'Settings',
       isActive: false,
       onTap: () {
-        Get.toNamed('/student/settings');
+        Get.toNamed(RouteName.settingScreen);
       },
     ),
   ];

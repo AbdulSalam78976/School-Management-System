@@ -43,6 +43,8 @@ class _AssignmentSubmissionsScreenState
         avatarUrl: '',
         enrollmentId: 'E001',
         grade: 'A',
+        enrolledSubjects: [],
+        email: '',
       ),
       Student(
         id: 's2',
@@ -50,6 +52,8 @@ class _AssignmentSubmissionsScreenState
         avatarUrl: '',
         enrollmentId: 'E002',
         grade: 'B',
+        enrolledSubjects: [],
+        email: '',
       ),
       Student(
         id: 's3',
@@ -57,6 +61,8 @@ class _AssignmentSubmissionsScreenState
         avatarUrl: '',
         enrollmentId: 'E003',
         grade: 'C',
+        enrolledSubjects: [],
+        email: '',
       ),
     ];
     final List<AssignmentSubmission> submissions = controller

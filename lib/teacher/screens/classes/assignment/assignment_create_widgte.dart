@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:school_app/common/models/assignment.dart';
+import 'package:school_app/common/models/class.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
 import 'package:school_app/common/utils/utils.dart';
 import 'package:school_app/teacher/screens/classes/assignment/assignment_controller.dart';
 
-void AssignmentCreate(BuildContext context, String classId, String teacherId) {
+void AssignmentCreate(BuildContext context, SchoolClass classdata) {
   final controller = Get.find<TeacherAssignmentController>();
 
   showModalBottomSheet(
@@ -211,10 +212,10 @@ void AssignmentCreate(BuildContext context, String classId, String teacherId) {
                         assignedDate: DateTime.now(),
                         assignedTime: DateTime.now(),
                         isSubmitted: false,
-                        classId: classId,
-                        teacherId: teacherId,
-                        subject: '', // Replace if needed
+                        classId: classdata.id, // ❌ Not defined
+                        teacherId: controller.loggedInTeacher.id,
                         attachments: controller.attachments,
+                        subjectId: '',
                       );
 
                       controller.addAssignment(assignment);
