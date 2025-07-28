@@ -3,6 +3,8 @@ import 'package:school_app/common/screens/login/screen/login_screen.dart';
 import 'package:school_app/common/resources/routes/route_names.dart';
 import 'package:school_app/student/screens/class/class_binding.dart';
 import 'package:school_app/student/screens/class/class_screen.dart';
+import 'package:school_app/student/screens/class/assignment_upload_screen.dart';
+import 'package:school_app/student/screens/class/assignment_upload_binding.dart';
 import 'package:school_app/student/screens/home%20screen/student_dashboard.dart';
 import 'package:school_app/student/screens/home%20screen/student_home_binding.dart';
 import 'package:school_app/common/screens/announcements%20screen/announcements_binding.dart';
@@ -13,7 +15,8 @@ import 'package:school_app/teacher/screens/classes/assignment/assignment_binding
 import 'package:school_app/teacher/screens/classes/assignment/assignment_screen.dart';
 import 'package:school_app/teacher/screens/classes/assignment/assignment_submission_detail_screen.dart';
 import 'package:school_app/teacher/screens/classes/assignment/assignment_submissions_screen.dart';
-import 'package:school_app/teacher/screens/classes/class_detail_screen.dart';
+import 'package:school_app/teacher/screens/classes/class_detail_screen.dart'
+    as TeacherClassDetail;
 import 'package:school_app/teacher/screens/classes/classes_binding.dart';
 import 'package:school_app/teacher/screens/classes/classes_screen.dart';
 import 'package:school_app/teacher/screens/home%20screen/teacher_dashboard.dart';
@@ -26,6 +29,11 @@ import 'package:school_app/common/screens/settings/profile/profile_binding.dart'
 import 'package:school_app/common/screens/settings/profile/profile_screen.dart';
 import 'package:school_app/common/screens/settings/setting_binding.dart';
 import 'package:school_app/common/screens/settings/settings_screen.dart';
+import 'package:school_app/common/screens/settings/notifications_screen.dart';
+import 'package:school_app/common/screens/settings/privacy_security_screen.dart';
+import 'package:school_app/common/screens/settings/help_support_screen.dart';
+import 'package:school_app/student/screens/class/class_detail_screen.dart'
+    as StudentClassDetail;
 
 class AppRoutes {
   static appRoutes() => [
@@ -133,7 +141,7 @@ class AppRoutes {
     ),
     GetPage(
       name: RouteName.teacherClassDetailScreen,
-      page: () => ClassDetailScreen(),
+      page: () => const TeacherClassDetail.ClassDetailScreen(),
       binding: ClassesBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
@@ -142,6 +150,39 @@ class AppRoutes {
       name: RouteName.classScreen,
       page: () => ClassScreen(),
       binding: ClassBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+
+    GetPage(
+      name: RouteName.classDetailScreen,
+      page: () => const StudentClassDetail.ClassDetailScreen(),
+      binding: ClassBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: RouteName.assignmentUploadScreen,
+      page: () => const AssignmentUploadScreen(),
+      binding: AssignmentUploadBinding(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: RouteName.notificationsScreen,
+      page: () => const NotificationsScreen(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: RouteName.privacySecurityScreen,
+      page: () => const PrivacySecurityScreen(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
+    GetPage(
+      name: RouteName.helpSupportScreen,
+      page: () => const HelpSupportScreen(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:school_app/common/components/drawer/drawer_model.dart';
+import 'package:school_app/common/resources/routes/route_names.dart';
 
 class DrawerControllerCustom extends GetxController {
   final RxString userName = ''.obs;
@@ -27,6 +28,6 @@ class DrawerControllerCustom extends GetxController {
   }
 
   void logout() {
-    // Implement logout logic here
+    Get.offAllNamed(RouteName.loginScreen);
   }
 }

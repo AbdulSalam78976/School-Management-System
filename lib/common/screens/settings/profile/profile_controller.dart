@@ -7,9 +7,6 @@ class ProfileController extends GetxController {
   // Reactive profile image
   final Rx<File?> profileImage = Rx<File?>(null);
 
-  // Controller for new password input
-  final TextEditingController passwordController = TextEditingController();
-
   // Method to pick a new profile image
   Future<void> pickProfileImage() async {
     final picker = ImagePicker();
@@ -24,23 +21,23 @@ class ProfileController extends GetxController {
   }
 
   // Method to update password
-  void updatePassword() {
-    final newPassword = passwordController.text.trim();
-
+  void updatePassword(String newPassword) {
     if (newPassword.isEmpty) {
       Get.snackbar('Error', 'Password cannot be empty');
       return;
     }
 
+    if (newPassword.length < 6) {
+      Get.snackbar('Error', 'Password must be at least 6 characters');
+      return;
+    }
+
     // TODO: Add actual backend logic here
-    Get.back(); // Close dialog
     Get.snackbar('Success', 'Password updated successfully');
-    passwordController.clear();
   }
 
   @override
   void onClose() {
-    passwordController.dispose();
     super.onClose();
   }
 }

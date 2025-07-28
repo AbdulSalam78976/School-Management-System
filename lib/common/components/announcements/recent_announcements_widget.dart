@@ -3,21 +3,20 @@ import 'package:get/get.dart';
 import 'package:school_app/common/components/announcements/announcements_controller.dart';
 import 'package:school_app/common/components/announcements/announcements_tile.dart';
 import 'package:school_app/common/components/section_header_with_action.dart';
+import 'package:school_app/common/resources/routes/route_names.dart';
 
 class AnnouncementsWidget extends StatelessWidget {
   const AnnouncementsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final AnnouncementsController controller = Get.put(
-      AnnouncementsController(),
-    );
+    final AnnouncementController controller = Get.put(AnnouncementController());
     return Column(
       children: [
         SectionHeaderWithAction(
           title: 'Recent Announcements',
           onTap: () {
-            Get.toNamed('/teacher_announcement_Screen');
+            Get.toNamed(RouteName.announcementScreen);
           },
         ),
         const SizedBox(height: 10),

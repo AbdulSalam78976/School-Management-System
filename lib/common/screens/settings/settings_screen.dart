@@ -34,24 +34,70 @@ class _TeacherSettingScreenState extends State<TeacherSettingScreen> {
             ),
 
             CustomTile(
-              icon: Icons.settings,
-              title: 'Account Settings',
-              subtitle: 'Manage your account settings',
-              onTap: () {
-                // Navigate or show dialog
-              },
-            ),
-
-            CustomTile(
               icon: Icons.notifications,
               title: 'Notifications',
               subtitle: 'Manage notification settings',
               onTap: () {
-                // Navigate or show dialog
+                Get.toNamed('/notifications_screen');
+              },
+            ),
+
+            CustomTile(
+              icon: Icons.security,
+              title: 'Privacy & Security',
+              subtitle: 'Manage privacy and security settings',
+              onTap: () {
+                Get.toNamed('/privacy_security_screen');
+              },
+            ),
+
+            CustomTile(
+              icon: Icons.help,
+              title: 'Help & Support',
+              subtitle: 'Get help and contact support',
+              onTap: () {
+                Get.toNamed('/help_support_screen');
+              },
+            ),
+
+            CustomTile(
+              icon: Icons.info,
+              title: 'About',
+              subtitle: 'App information and version',
+              onTap: () {
+                _showAboutDialog();
               },
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _showAboutDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('About School Management App'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Version: 1.0.0'),
+            const SizedBox(height: 8),
+            Text('Build: 2024.12.01'),
+            const SizedBox(height: 8),
+            Text(
+              'A comprehensive school management system for students, teachers, and administrators.',
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Close'),
+          ),
+        ],
       ),
     );
   }
@@ -112,6 +158,11 @@ class CustomTile extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              color: AppPalette.greyColor,
+              size: 16,
             ),
           ],
         ),

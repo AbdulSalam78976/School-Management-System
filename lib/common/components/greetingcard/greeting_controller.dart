@@ -44,7 +44,7 @@ class GreetingController extends GetxController {
       await Future.delayed(const Duration(seconds: 2));
 
       // ✅ Mock response
-      final fetchedName = 'Abdul Salam'; // Replace this with actual API call
+      final fetchedName = 'Sehal Bilal'; // Replace this with actual API call
 
       name.value = fetchedName;
       error.value = '';

@@ -15,16 +15,26 @@ class RouteName {
       '/assignmentSubmissionsScreen';
   static const String assignmentSubmissionsDetailScreen =
       '/assignmentSubmissionsDetailScreen';
+
   //student screens
   static const String classScreen = '/class_Screen';
-  //common
+  static const String classDetailScreen = '/class_detail_Screen';
+  static const String assignmentUploadScreen = '/assignment_upload_Screen';
+  static const String studentAttendanceScreen = '/student_attendance_Screen';
+  static const String studentTimetableScreen = '/student_timetable_Screen';
+  static const String studentGradesScreen = '/student_grades_Screen';
+  static const String studentAssignmentsScreen = '/student_assignments_Screen';
 
+  //settings screens
+  static const String notificationsScreen = '/notifications_screen';
+  static const String privacySecurityScreen = '/privacy_security_screen';
+  static const String helpSupportScreen = '/help_support_screen';
+
+  //common
   static const String announcementScreen = '/announcement_Screen';
   static const String messagesScreen = '/messages_Screen';
-
   static const String chatScreen = '/chat_Screen';
   static const String newConversationScreen = '/newConversation_Screen';
-
   static const String settingScreen = '/setting_Screen';
   static const String profileScreen = '/profile_Screen';
 }

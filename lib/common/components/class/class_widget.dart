@@ -137,9 +137,9 @@ class ClassCard extends StatelessWidget {
                       child: GestureDetector(
                         onTap: onAssignmentTap,
                         child: Icon(
-                          Icons.assignment_turned_in,
+                          Icons.assignment,
                           size: 28,
-                          color: Colors.cyan[300],
+                          color: Colors.white,
                         ),
                       ),
                     ),

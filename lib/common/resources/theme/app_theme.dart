@@ -152,7 +152,7 @@ final AppTheme = ThemeData(
     labelColor: AppPalette.primaryColor,
     unselectedLabelColor: AppPalette.greyColor,
     indicator: UnderlineTabIndicator(
-      borderSide: BorderSide(color: AppPalette.primaryColor, width: 2),
+      borderSide: BorderSide(color: AppPalette.secondaryColor, width: 8),
     ),
     labelStyle: const TextStyle(fontWeight: FontWeight.bold),
     unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),

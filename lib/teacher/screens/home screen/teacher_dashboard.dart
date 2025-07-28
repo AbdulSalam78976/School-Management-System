@@ -33,7 +33,7 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
   // Find controllers provided by the binding
   final quickActionCardController = Get.find<QuickActionCardController>();
   final upcomingClassesController = Get.find<UpcomingClassesController>();
-  final announcementsController = Get.find<AnnouncementsController>();
+  final announcementController = Get.find<AnnouncementController>();
 
   @override
   void initState() {
@@ -113,7 +113,7 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
           date: '4 days ago',
         ),
       ];
-      announcementsController.setAnnouncements(announcements);
+      announcementController.setAnnouncements(announcements);
     });
   }
 

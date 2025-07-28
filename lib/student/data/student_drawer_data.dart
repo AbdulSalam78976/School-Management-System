@@ -10,7 +10,10 @@ class StudentDrawerData {
       title: 'Dashboard',
       isActive: false, // This will be managed by the controller
       onTap: () {
-        // Navigate to dashboard or stay on current screen
+        // If on another screen, navigate to home, clearing the stack.
+        if (Get.currentRoute != RouteName.studentHomeScreen) {
+          Get.offAllNamed(RouteName.studentHomeScreen);
+        }
       },
     ),
     DrawerModel(

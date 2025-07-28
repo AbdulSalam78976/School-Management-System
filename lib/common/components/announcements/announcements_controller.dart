@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'announcements_model.dart';
 
-class AnnouncementsController extends GetxController {
+class AnnouncementController extends GetxController {
   final RxList<AnnouncementsModel> announcements = <AnnouncementsModel>[].obs;
 
   @override

@@ -9,7 +9,7 @@ class TeacherHomeBinding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => QuickActionCardController());
     Get.lazyPut(() => UpcomingClassesController());
-    Get.lazyPut(() => AnnouncementsController());
+    Get.lazyPut(() => AnnouncementController());
     Get.lazyPut(() => GreetingController());
   }
 }
