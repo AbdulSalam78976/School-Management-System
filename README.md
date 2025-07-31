@@ -1,16 +1,48 @@
-# school_app
+# 📚 School Management App
 
-A new Flutter project.
+A modern, responsive school management system built using **Flutter** designed to streamline student, teacher, and administrator interactions.
 
-## Getting Started
+## 🚀 Features
 
-This project is a starting point for a Flutter application.
+- 👨‍🏫 Teacher Dashboard
+  - Mark Attendance
+  - View Timetable
+  - View Class Subjects
+  - Uplaod Assignemtns
 
-A few resources to get you started if this is your first Flutter project:
+- 🧑‍🎓 Student Dashboard
+  - View Subjects
+  - Access Assignments & Timetable
+  - View Announcements
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 📚 Subjects & Classes
+  - View all subjects in a selected class
+  - Manage subject-specific content
+  - Separate teacher & student interfaces
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 🔐 Authentication
+  - Secure Login/Signup using Supabase Auth
+  - Role-based access (Student / Teacher / Admin)
+
+- 💾 Backend Powered by Supabase
+  - PostgreSQL for structured data
+  - Supabase Auth for user management
+  - Real-time updates and permissions
+
+## 🛠️ Tech Stack
+
+| Technology | Description                    |
+|------------|--------------------------------|
+| Flutter    | Frontend (Cross-platform)      |
+| Dart       | Programming Language           |
+| Supabase   | Backend-as-a-Service (BaaS)    |
+| Lottie     | Animated UI loading widgets    |
+| GetX       | State Management & Navigation  |
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/your-username/school-management-app.git
+cd school-management-app
+flutter pub get
+flutter run
