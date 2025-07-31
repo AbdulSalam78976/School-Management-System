@@ -39,6 +39,9 @@ A modern, responsive school management system built using **Flutter** designed t
 | Lottie     | Animated UI loading widgets    |
 | GetX       | State Management & Navigation  |
 
+![image alt]([https://github.com/AbdulSalam78976/Responsive_Dashboard/blob/4aef0dc043fbc309106ef96ae8a96d965d773b0b/Sample%20Images/Screenshot%20(9).png](https://github.com/AbdulSalam78976/School-Management-App/blob/main/screenshots/IMG-20250730-WA0044.jpg))
+![image alt]([https://github.com/AbdulSalam78976/Responsive_Dashboard/blob/4aef0dc043fbc309106ef96ae8a96d965d773b0b/Sample%20Images/Screenshot%20(9).png](https://github.com/AbdulSalam78976/School-Management-App/blob/main/screenshots/IMG-20250730-WA0045.jpg))
+
 ## 📦 Installation
 
 ```bash
