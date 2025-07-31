@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'School Management App',
       theme: AppTheme,
       initialBinding: AppBinding(),
-      initialRoute: RouteName.studentHomeScreen,
+      initialRoute: RouteName.loginScreen,
       getPages: AppRoutes.appRoutes(),
     );
   }
