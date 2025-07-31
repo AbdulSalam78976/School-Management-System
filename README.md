@@ -39,8 +39,17 @@ A modern, responsive school management system built using **Flutter** designed t
 | Lottie     | Animated UI loading widgets    |
 | GetX       | State Management & Navigation  |
 
-
-
+![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250731-WA0052.jpg)
+![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250731-WA0051.jpg)
+![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250731-WA0050.jpg)
+![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250731-WA0049.jpg)
+![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250731-WA0048.jpg)
+![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250730-WA0051.jpg)
+![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250730-WA0050.jpg)
+![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250730-WA0049.jpg)
+![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250730-WA0048.jpg)
+![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250730-WA0047.jpg)
+![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250730-WA0046.jpg)
 ![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250730-WA0045.jpg)
 ![image alt](https://github.com/AbdulSalam78976/School-Management-App/blob/bb706cb49308d34adfa5b54d420732013694930b/screenshots/IMG-20250730-WA0044.jpg)
 
