@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:school_app/common/components/appbar/appbar_controller.dart';
 import 'package:school_app/common/components/drawer/drawer_controller.dart';
 
-class TeacherSettingController extends GetxController {
+class SettingController extends GetxController {
   final AppBarController appBarController = Get.find<AppBarController>();
   final DrawerControllerCustom drawerController =
       Get.find<DrawerControllerCustom>();

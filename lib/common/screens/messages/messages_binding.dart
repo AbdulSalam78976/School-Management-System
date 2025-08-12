@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:school_app/common/screens/messages/messages_controller.dart';
 
-class TeacherMessagesBinding extends Bindings {
+class MessagesBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => TeacherMessagesController());
+    Get.lazyPut(() => MessagesController());
   }
 }

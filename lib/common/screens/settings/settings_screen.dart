@@ -6,17 +6,17 @@ import 'package:school_app/common/resources/routes/route_names.dart';
 import 'package:school_app/common/resources/theme/colors.dart';
 import 'package:school_app/common/screens/settings/setting_controller.dart';
 
-class TeacherSettingScreen extends StatefulWidget {
-  const TeacherSettingScreen({super.key});
+class SettingScreen extends StatefulWidget {
+  const SettingScreen({super.key});
 
   @override
-  State<TeacherSettingScreen> createState() => _TeacherSettingScreenState();
+  State<SettingScreen> createState() => _SettingScreenState();
 }
 
-class _TeacherSettingScreenState extends State<TeacherSettingScreen> {
+class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<TeacherSettingController>();
+    final controller = Get.find<SettingController>();
     return Scaffold(
       appBar: const CustomAppBar(),
       drawer: const CustomDrawer(),

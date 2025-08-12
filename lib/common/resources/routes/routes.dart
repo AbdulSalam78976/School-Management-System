@@ -104,8 +104,8 @@ class AppRoutes {
 
     GetPage(
       name: RouteName.messagesScreen,
-      page: () => TeacherMessagesScreen(),
-      binding: TeacherMessagesBinding(),
+      page: () => MessagesScreen(),
+      binding: MessagesBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),
@@ -113,21 +113,21 @@ class AppRoutes {
     GetPage(
       name: RouteName.chatScreen,
       page: () => const TeacherChatScreen(),
-      binding: TeacherMessagesBinding(),
+      binding: MessagesBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),
     GetPage(
       name: RouteName.newConversationScreen,
       page: () => const NewConversationScreen(),
-      binding: TeacherMessagesBinding(),
+      binding: MessagesBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,
     ),
 
     GetPage(
       name: RouteName.settingScreen,
-      page: () => const TeacherSettingScreen(),
+      page: () => const SettingScreen(),
       binding: SettingBinding(),
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade,

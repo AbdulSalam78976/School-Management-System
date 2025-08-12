@@ -9,6 +9,7 @@ class SchoolClass {
   final List<Subject> subjects;
   final List<Student> students;
   final Teacher classTeacher; // 🆕 Added class teacher
+  
 
   SchoolClass({
     required this.id,

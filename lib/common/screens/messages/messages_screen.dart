@@ -6,17 +6,17 @@ import 'package:school_app/common/resources/routes/route_names.dart';
 import 'package:school_app/common/screens/messages/messages_controller.dart';
 import 'package:school_app/common/screens/messages/new_conversation_screen.dart';
 
-class TeacherMessagesScreen extends StatefulWidget {
-  const TeacherMessagesScreen({super.key});
+class MessagesScreen extends StatefulWidget {
+  const MessagesScreen({super.key});
 
   @override
-  State<TeacherMessagesScreen> createState() => _TeacherMessagesScreenState();
+  State<MessagesScreen> createState() => _MessagesScreenState();
 }
 
-class _TeacherMessagesScreenState extends State<TeacherMessagesScreen> {
+class _MessagesScreenState extends State<MessagesScreen> {
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<TeacherMessagesController>();
+    final controller = Get.find<MessagesController>();
 
     final List<Map<String, String>> messages = [
       {"name": "Ms. Johnson", "message": "See you tomorrow!", "avatar": ""},
