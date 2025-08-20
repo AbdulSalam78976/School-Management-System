@@ -25,8 +25,23 @@ class _AssignmentSubmissionsScreenState
   @override
   void initState() {
     super.initState();
-    classId = Get.arguments['classId'] ?? '';
-    assignment = Get.arguments['assignment'] ?? '';
+    final args = Get.arguments as Map<String, dynamic>?;
+    classId = (args != null && args['classId'] != null)
+        ? args['classId'] as String
+        : '';
+    assignment = (args != null && args['assignment'] is Assignment)
+        ? args['assignment'] as Assignment
+        : Assignment(
+            id: 'tmp',
+            title: 'Assignment',
+            description: '',
+            classId: classId,
+            subjectId: '',
+            totalMarks: 0,
+            assignedDate: DateTime.now(),
+            assignedTime: DateTime.now(),
+            teacherId: '',
+          );
   }
 
   @override
@@ -43,7 +58,7 @@ class _AssignmentSubmissionsScreenState
         avatarUrl: '',
         enrollmentId: 'E001',
         grade: 'A',
-        enrolledSubjects: [],
+
         email: '',
       ),
       Student(
@@ -52,7 +67,7 @@ class _AssignmentSubmissionsScreenState
         avatarUrl: '',
         enrollmentId: 'E002',
         grade: 'B',
-        enrolledSubjects: [],
+
         email: '',
       ),
       Student(
@@ -61,7 +76,7 @@ class _AssignmentSubmissionsScreenState
         avatarUrl: '',
         enrollmentId: 'E003',
         grade: 'C',
-        enrolledSubjects: [],
+
         email: '',
       ),
     ];
@@ -92,8 +107,14 @@ class _AssignmentSubmissionsScreenState
       return ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         leading: CircleAvatar(
-          backgroundImage: AssetImage(student.avatarUrl),
           radius: 28,
+          backgroundColor: AppPalette.primaryColor.withOpacity(0.1),
+          backgroundImage: (student.avatarUrl.isNotEmpty)
+              ? AssetImage(student.avatarUrl)
+              : null,
+          child: (student.avatarUrl.isEmpty)
+              ? const Icon(Icons.person, color: AppPalette.primaryColor)
+              : null,
         ),
         title: Text(
           student.name,

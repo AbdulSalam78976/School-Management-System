@@ -52,4 +52,40 @@ class Assignment {
     this.submissionDate,
     this.submissions = const [],
   });
+
+  Assignment copyWith({
+    String? id,
+    String? title,
+    String? description,
+    String? classId,
+    String? subjectId,
+    int? totalMarks,
+    DateTime? assignedDate,
+    DateTime? assignedTime,
+    DateTime? dueDate,
+    DateTime? dueTime,
+    String? teacherId,
+    List<PlatformFile>? attachments,
+    bool? isSubmitted,
+    DateTime? submissionDate,
+    List<AssignmentSubmission>? submissions,
+  }) {
+    return Assignment(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      classId: classId ?? this.classId,
+      subjectId: subjectId ?? this.subjectId,
+      totalMarks: totalMarks ?? this.totalMarks,
+      assignedDate: assignedDate ?? this.assignedDate,
+      assignedTime: assignedTime ?? this.assignedTime,
+      dueDate: dueDate ?? this.dueDate,
+      dueTime: dueTime ?? this.dueTime,
+      teacherId: teacherId ?? this.teacherId,
+      attachments: attachments ?? this.attachments,
+      isSubmitted: isSubmitted ?? this.isSubmitted,
+      submissionDate: submissionDate ?? this.submissionDate,
+      submissions: submissions ?? this.submissions,
+    );
+  }
 }

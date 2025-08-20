@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:school_app/common/utils/utils.dart';
 import '../../../resources/routes/route_names.dart';
 
 class LoginController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // Observable for loading state (optional)
   var isLoading = false.obs;
   var obscureText = true.obs;
 
@@ -16,8 +16,8 @@ class LoginController extends GetxController {
 
   @override
   void onClose() {
-    emailController.dispose();
-    passwordController.dispose();
+    // Don't dispose controllers here to avoid the error
+    // The GetX controller lifecycle handles this automatically
     super.onClose();
   }
 
@@ -27,11 +27,24 @@ class LoginController extends GetxController {
 
     isLoading.value = true;
 
-    // Simulate login process (replace with your actual login logic)
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       isLoading.value = false;
-      // Navigate to the dashboard screen
-      Get.toNamed(RouteName.teacherHomeScreen);
+
+      // Clear controllers before navigation to prevent issues
+      emailController.clear();
+      passwordController.clear();
+
+      if (email == 'teacher@example.com' && password == '123') {
+        Get.offNamed(
+          RouteName.teacherHomeScreen,
+        ); // Use offNamed to remove current screen
+      } else if (email == 'student@example.com' && password == '123') {
+        Get.offNamed(
+          RouteName.studentHomeScreen,
+        ); // Use offNamed to remove current screen
+      } else {
+        Utils.snackBar(title: 'Error', message: 'Invalid credentials');
+      }
     });
   }
 }

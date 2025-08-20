@@ -91,44 +91,8 @@ class TeacherAttendanceScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
-                    "Class",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
+
                   const SizedBox(height: 8),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(
-                        controller.filteredclasses.length,
-                        (index) {
-                          final isSelected =
-                              controller.selectedClassIndex.value == index;
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: ChoiceChip(
-                              label: Text(
-                                controller.filteredclasses[index].name,
-                              ),
-                              avatar: Icon(
-                                Icons.class_outlined,
-                                color: isSelected
-                                    ? Theme.of(
-                                        context,
-                                      ).chipTheme.secondarySelectedColor
-                                    : Theme.of(
-                                        context,
-                                      ).chipTheme.labelStyle?.color,
-                              ),
-                              selected: isSelected,
-                              onSelected: (_) => controller.selectClass(index),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
                   const Text(
                     'Students',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),

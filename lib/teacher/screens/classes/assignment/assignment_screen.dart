@@ -41,7 +41,7 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
       drawer: const CustomDrawer(),
       body: SafeArea(
         child: Obx(() {
-          final classAssignments = controller.filteredassignments;
+          final classAssignments = controller.filteredAssignments;
           if (classAssignments.isEmpty) {
             return const Center(
               child: Text(

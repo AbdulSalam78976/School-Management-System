@@ -3,19 +3,18 @@ import 'package:get/get.dart';
 import 'package:school_app/teacher/screens/attendance/attendance_controller.dart';
 
 class StudentListView extends StatelessWidget {
-  final AttendanceController controller = Get.find();
+  final AttendanceController controller = Get.find<AttendanceController>();
 
   StudentListView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      if (controller.filteredclasses.isEmpty) {
-        return const Center(child: CircularProgressIndicator());
+      if (controller.myClass.value == null) {
+        return const Center(child: Text('No class Assigned.'));
       }
-      final displayedStudents = controller
-          .filteredclasses[controller.selectedClassIndex.value]
-          .students;
+
+      final displayedStudents = controller.getStudents();
 
       return ListView.separated(
         shrinkWrap: true,

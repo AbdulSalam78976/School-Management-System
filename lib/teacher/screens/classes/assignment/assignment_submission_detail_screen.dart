@@ -191,6 +191,10 @@ class _AssignmentSubmissionDetailScreenState
                   controller.submitMarksAndFeedback(
                     assignmentId: '',
                     studentId: '',
+                    marksObtained: int.parse(
+                      controller.obtainedmarksController.text,
+                    ),
+                    feedback: controller.feedbackController.text,
                   );
                   Get.snackbar('Submitted', 'Marks & feedback submitted!');
                 },

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:school_app/common/components/appbar/appbar_controller.dart';
 import 'package:school_app/common/components/drawer/drawer_controller.dart';
 import 'package:school_app/common/models/class.dart';
+import 'package:school_app/common/models/student.dart';
 import 'package:school_app/common/models/subject.dart';
 import 'package:school_app/common/models/teacher.dart';
 
@@ -56,7 +57,43 @@ class TeacherClassesController extends GetxController {
       classTeacher: loggedInTeacher,
       subjects: [Subject(id: 's1', name: 'Math', teacher: loggedInTeacher)],
       section: 'A',
-      students: [],
+      students: [
+        Student(
+          id: 's1',
+          name: 'Alice Smith',
+          avatarUrl: '',
+          enrollmentId: 'E001',
+          grade: 'A',
+
+          email: '',
+        ),
+        Student(
+          id: 's2',
+          name: 'Bob Johnson',
+          avatarUrl: '',
+          enrollmentId: 'E002',
+          grade: 'B',
+
+          email: '',
+        ),
+        Student(
+          id: 's3',
+          name: 'Charlie Lee',
+          avatarUrl: '',
+          enrollmentId: 'E003',
+          grade: 'C',
+          email: '',
+        ),
+        Student(
+          id: 's4',
+          name: 'David Kim',
+          avatarUrl: '',
+          enrollmentId: 'E004',
+          grade: 'D',
+
+          email: '',
+        ),
+      ],
     );
 
     filteredclasses.assignAll([testClass]); // Assign just this hardcoded class
