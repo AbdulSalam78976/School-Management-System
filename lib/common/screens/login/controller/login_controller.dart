@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:school_app/common/data/api_service.dart';
+import 'package:school_app/common/utils/sessionmanager.dart';
 import 'package:school_app/common/utils/utils.dart';
 import '../../../resources/routes/route_names.dart';
 
@@ -21,30 +23,36 @@ class LoginController extends GetxController {
     super.onClose();
   }
 
-  void login() {
-    final email = emailController.text.trim();
-    final password = passwordController.text.trim();
-
+  Future<void> login() async {
+    final api = ApiService();
     isLoading.value = true;
 
-    Future.delayed(const Duration(seconds: 1), () {
-      isLoading.value = false;
+    try {
+      final result = await api.post("/auth/login", {
+        "email": emailController.text.trim(),
+        "password": passwordController.text.trim(),
+      }, requireAuth: false);
 
-      // Clear controllers before navigation to prevent issues
-      emailController.clear();
-      passwordController.clear();
+      if (result.isSuccess) {
+        final data = result.data as Map<String, dynamic>;
+        final token = data['token'] as String?;
 
-      if (email == 'teacher@example.com' && password == '123') {
-        Get.offNamed(
-          RouteName.teacherHomeScreen,
-        ); // Use offNamed to remove current screen
-      } else if (email == 'student@example.com' && password == '123') {
-        Get.offNamed(
-          RouteName.studentHomeScreen,
-        ); // Use offNamed to remove current screen
+        if (token != null) {
+          // Save token
+          await SessionManager.saveToken(token);
+
+          // ✅ Centralized role-based navigation
+          await SessionManager.navigateBasedOnRole();
+        } else {
+          Utils.snackBar(title: "Error", message: "Invalid credentials");
+        }
       } else {
-        Utils.snackBar(title: 'Error', message: 'Invalid credentials');
+        Utils.snackBar(title: "Error", message: result.error ?? "Login failed");
       }
-    });
+    } catch (e) {
+      Utils.snackBar(title: "Error", message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:school_app/common/components/drawer/drawer_model.dart';
 import 'package:school_app/common/resources/routes/route_names.dart';
+import 'package:school_app/common/utils/sessionmanager.dart';
 
 class DrawerControllerCustom extends GetxController {
   final RxString userName = ''.obs;
@@ -28,6 +29,8 @@ class DrawerControllerCustom extends GetxController {
   }
 
   void logout() {
-    Get.offAllNamed(RouteName.loginScreen);
+    SessionManager.clearToken().then(
+      (value) => Get.offNamed(RouteName.loginScreen),
+    );
   }
 }

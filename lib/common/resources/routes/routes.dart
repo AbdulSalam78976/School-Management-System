@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:school_app/common/screens/login/screen/login_screen.dart';
 import 'package:school_app/common/resources/routes/route_names.dart';
+import 'package:school_app/common/screens/splashscreen.dart';
 import 'package:school_app/student/screens/class/class_binding.dart';
 import 'package:school_app/student/screens/class/class_screen.dart';
 import 'package:school_app/student/screens/class/assignment_upload_screen.dart';
@@ -37,6 +38,12 @@ import 'package:school_app/student/screens/class/class_detail_screen.dart'
 
 class AppRoutes {
   static appRoutes() => [
+    GetPage(
+      name: RouteName.splashScreen,
+      page: () => SplashScreen(),
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade,
+    ),
     GetPage(
       name: RouteName.loginScreen,
       page: () => LoginScreen(),
